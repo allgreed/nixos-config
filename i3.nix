@@ -12,14 +12,14 @@
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
-	xorg.xmodmap
-	feh
-	xcape
+        xorg.xmodmap
+        feh
+        xcape
         dmenu
         i3lock
         i3blocks
-	source-code-pro
-	rxvt_unicode
+	    source-code-pro
+        rxvt_unicode
      ];
     };
 

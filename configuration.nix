@@ -36,6 +36,7 @@
 
     git
 
+    dotfiles
     firefox
   ];
 
