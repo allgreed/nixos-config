@@ -1,69 +1,83 @@
 { config, pkgs, ... }:
+let
+    localConfiguration = if builtins.pathExists ./local.nix
+        then [ ./local.nix ]
+        else [];
+in
 {
-  imports = [ 
-      ./hardware-configuration.nix
-      ./i3.nix
+    imports = [ 
+        ./hardware-configuration.nix
+        ./i3.nix
+      ]
+      ++ localConfiguration;
+
+    boot.loader.grub.enable = true;
+    boot.loader.grub.version = 2;
+    boot.loader.grub.device = "/dev/sda";
+
+    networking.networkmanager.enable = true;
+
+    # Select internationalisation properties.
+    # i18n = {
+    #   consoleFont = "Lat2-Terminus16";
+    #   consoleKeyMap = "us";
+    #   defaultLocale = "en_US.UTF-8";
+    # };
+
+    # Set your time zone.
+    # time.timeZone = "Europe/Amsterdam";
+
+    environment.systemPackages = with pkgs; [
+      xorg.xmodmap
+      xcape
+      source-code-pro
+      rxvt_unicode
+
+      direnv
+      vim
+
+      git
+
+      dotfiles
+
+      firefox
     ];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda";
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # programs.mtr.enable = true;
+    # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
-  networking.hostName = "connor";
-  networking.networkmanager.enable = true;
+    # List services that you want to enable:
 
-  # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
 
-  # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+    # Enable CUPS to print documents.
+    # services.printing.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    vim
+    sound.enable = true;
+    hardware.pulseaudio.enable = true;
 
-    git
+    # TODO: Split x and i3 configuration - then compose them
+    services.xserver = {
+        enable = true;
+        layout = "pl";
+        xkbOptions = "ctrl:nocaps";
+    };
 
-    dotfiles
-    firefox
-  ];
+    users.users.allgreed = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "networkmanager" ];
+    };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-
-  # List services that you want to enable:
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "pl";
-  services.xserver.xkbOptions = "ctrl:nocaps";
-
-  users.users.allgreed = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-  };
-
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
-  system.stateVersion = "19.03"; # Did you read the comment?
+    # This value determines the NixOS release with which your system is to be
+    # compatible, in order to avoid breaking some software such as database
+    # servers. You should change this only after NixOS release notes say you
+    # should.
+    system.stateVersion = "19.03"; # Did you read the comment?
 
 }

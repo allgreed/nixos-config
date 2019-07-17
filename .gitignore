@@ -1,2 +1,3 @@
 # machine specific
 hardware-configuration.nix
+local.nix
