@@ -7,7 +7,7 @@ in
 {
     imports = [ 
         ./hardware-configuration.nix
-        ./common.nix
+        ./pkg.nix
         ./networking.nix
         ./gui.nix
       ]

@@ -2,16 +2,6 @@
 {
     environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw  ???? --- what does this do?? xD
 
-    environment.systemPackages = with pkgs; [
-        xorg.xmodmap
-        xcape
-        xclip
-
-        rxvt_unicode
-
-        source-code-pro
-    ];
-
     services.xserver = {
         enable = true;
         layout = "pl";
