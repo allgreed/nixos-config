@@ -12,6 +12,7 @@ in
       ++ localConfiguration;
 
     networking.networkmanager.enable = true;
+    time.timeZone = "Europe/Warsaw";
 
     # Select internationalisation properties.
     # i18n = {
@@ -19,9 +20,6 @@ in
     #   consoleKeyMap = "us";
     #   defaultLocale = "en_US.UTF-8";
     # };
-
-    # Set your time zone.
-    # time.timeZone = "Europe/Amsterdam";
 
     environment.systemPackages = with pkgs; [
       direnv
