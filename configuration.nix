@@ -7,13 +7,9 @@ in
 {
     imports = [ 
         ./hardware-configuration.nix
-        ./i3.nix
+        ./gui.nix
       ]
       ++ localConfiguration;
-
-    boot.loader.grub.enable = true;
-    boot.loader.grub.version = 2;
-    boot.loader.grub.device = "/dev/sda";
 
     networking.networkmanager.enable = true;
 
@@ -28,11 +24,6 @@ in
     # time.timeZone = "Europe/Amsterdam";
 
     environment.systemPackages = with pkgs; [
-      xorg.xmodmap
-      xcape
-      source-code-pro
-      rxvt_unicode
-
       direnv
       vim
 
@@ -43,31 +34,15 @@ in
       firefox
     ];
 
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # programs.mtr.enable = true;
-    # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-
-    # List services that you want to enable:
-
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];
     # networking.firewall.allowedUDPPorts = [ ... ];
+
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
 
-    # Enable CUPS to print documents.
-    # services.printing.enable = true;
-
     sound.enable = true;
     hardware.pulseaudio.enable = true;
-
-    # TODO: Split x and i3 configuration - then compose them
-    services.xserver = {
-        enable = true;
-        layout = "pl";
-        xkbOptions = "ctrl:nocaps";
-    };
 
     users.users.allgreed = {
       isNormalUser = true;
