@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+mkdir -p /mnt
+
+mkdir -p /media/ramdisk
+chmod u=rwx,g=rwx,o=rwxt /media/ramdisk

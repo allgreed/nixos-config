@@ -11,6 +11,8 @@
         xorg.xmodmap
         xcape
         xclip
+        scrot
+        imagemagick
 
         rxvt_unicode
 

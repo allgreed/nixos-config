@@ -13,6 +13,13 @@ in
       ]
       ++ localConfiguration;
 
+    fileSystems."/media/ramdisk" =
+    {
+        device = "tmpfs";
+        fsType = "tmpfs";
+        options = [ "nosuid" "nodev" "noexec" "nodiratime" "size=5M" ];
+    };
+
     environment.systemPackages = with pkgs; [
       dotfiles
       direnv
