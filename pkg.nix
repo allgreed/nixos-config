@@ -16,8 +16,6 @@
 
         rxvt_unicode
 
-        source-code-pro
-
         unzip # TODO: vs unzipNLS?
 
         mkpasswd
