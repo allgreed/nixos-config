@@ -8,17 +8,5 @@
 
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
-
-    environment.systemPackages = with pkgs; [
-    # curl 
-    # net-tools
-    # openvpn
-    # wireshark # packet sniffing / analyzing
-    # wakeonlan
-    # nmap
-    # whois
-    # arp-scan # arp discovery
-    ];
-
 }
 

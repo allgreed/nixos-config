@@ -20,15 +20,6 @@ in
         options = [ "nosuid" "nodev" "noexec" "nodiratime" "size=5M" ];
     };
 
-    environment.systemPackages = with pkgs; [
-      dotfiles
-      direnv
-      vim
-      git
-
-      firefox
-    ];
-
     sound.enable = true;
     hardware.pulseaudio.enable = true;
 
