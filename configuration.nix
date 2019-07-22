@@ -20,6 +20,8 @@ in
         options = [ "nosuid" "nodev" "noexec" "nodiratime" "size=5M" ];
     };
 
+    virtualisation.docker.enable = true;
+
     sound.enable = true;
     hardware.pulseaudio.enable = true;
 
@@ -33,7 +35,7 @@ in
 
     users.users.allgreed = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" ];
+      extraGroups = [ "wheel" "networkmanager" "docker" ];
     };
 
 
