@@ -17,7 +17,9 @@
 
     services.xserver = {
         enable = true;
-        #autorun = false; TODO: this needs some more work, because I have no idea how to manually start X under NixOS
+
+        autorun = false;
+        displayManager.startx.enable = true;
 
         layout = "pl";
         xkbOptions = "ctrl:nocaps";
