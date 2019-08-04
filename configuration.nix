@@ -33,9 +33,14 @@ in
     #   defaultLocale = "en_US.UTF-8";
     # };
 
-    users.users.allgreed = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "docker" ];
+    users = {
+        mutableUsers = false;
+
+        users.allgreed = {
+            isNormalUser = true;
+            extraGroups = [ "wheel" "networkmanager" "docker" ];
+            initialHashedPassword = "$6$sEk83.F2VbsYW$iILuEeRZZE5aIh87UIze4R7g82JGavVkm3yURcI38Zka5M/djEClUEr0.PWklwdea0UrGKrNAx3B.BKh435Uu0"; # please change the password via local.nix ASAP
+        };
     };
 
 
