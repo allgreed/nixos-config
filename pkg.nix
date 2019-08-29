@@ -12,14 +12,29 @@
 
         direnv
         vimHugeX
+        hexcurse
 
         xorg.xmodmap
         xcape
         xclip
         scrot
+        conky
         imagemagick
 
+        evince
+        vlc
+        gnome3.eog # TODO: drop in favour of feh?
+
+        workrave
+        redshift
+
+        arandr
+        screenkey # displays pressed keys, cool for presentations
+
         rxvt_unicode
+        #urxvt_font_size # TODO: how to make this work?
+
+        graphviz
 
         unzip # TODO: vs unzipNLS?
 
@@ -34,6 +49,7 @@
 
         jq # manipulate JSON
 
+        dnsutils
         # curl 
         # net-tools
         # openvpn
