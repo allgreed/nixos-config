@@ -13,8 +13,7 @@ in
       ]
       ++ localConfiguration;
 
-    fileSystems."/media/ramdisk" =
-    {
+    fileSystems."/media/ramdisk" = {
         device = "tmpfs";
         fsType = "tmpfs";
         options = [ "nosuid" "nodev" "noexec" "nodiratime" "size=5M" ];
@@ -23,9 +22,13 @@ in
     virtualisation.docker.enable = true;
 
     sound.enable = true;
-    hardware.pulseaudio.enable = true;
+    hardware.pulseaudio = {
+        enable = true;
+        support32Bit = true;
+    };
 
     time.timeZone = "Europe/Warsaw";
+    # TODO: do this
     # Select internationalisation properties.
     # i18n = {
     #   consoleFont = "Lat2-Terminus16";
@@ -38,11 +41,11 @@ in
 
         users.allgreed = {
             isNormalUser = true;
-            extraGroups = [ "wheel" "networkmanager" "docker" ];
+            extraGroups = [ "wheel" "networkmanager" "docker" "audio" ];
             initialHashedPassword = "$6$sEk83.F2VbsYW$iILuEeRZZE5aIh87UIze4R7g82JGavVkm3yURcI38Zka5M/djEClUEr0.PWklwdea0UrGKrNAx3B.BKh435Uu0"; # please change the password via local.nix ASAP
         };
+        # TODO: try mutiple hashing rounds
     };
-
 
     # This value determines the NixOS release with which your system is to be
     # compatible, in order to avoid breaking some software such as database
