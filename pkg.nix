@@ -21,6 +21,8 @@
         conky
         imagemagick
 
+        pavucontrol
+
         evince
         vlc
         gnome3.eog # TODO: drop in favour of feh?
