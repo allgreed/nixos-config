@@ -8,6 +8,8 @@
         tmux # terminal multiplexer
         ranger # file exploler
 
+        manpages
+
         dotfiles
 
         direnv

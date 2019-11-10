@@ -36,6 +36,8 @@ in
     #   defaultLocale = "en_US.UTF-8";
     # };
 
+    documentation.dev.enable = true;
+
     users = {
         mutableUsers = false;
 
