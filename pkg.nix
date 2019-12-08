@@ -55,6 +55,7 @@
         jq # manipulate JSON
 
         dnsutils
+        wavemon
         # curl 
         # net-tools
         # openvpn
