@@ -1,5 +1,7 @@
 { config, pkgs, callPackage, ... }: 
 {
+    nixpkgs.config.allowUnfree = true; # for rambox
+
     environment.systemPackages = with pkgs; [
         python27
         python3
@@ -46,6 +48,7 @@
         mkpasswd
 
         firefox
+        rambox
 
         gnumake # build / script automation
         expect # interactive script automation utility
