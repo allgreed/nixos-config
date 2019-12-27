@@ -20,6 +20,7 @@ in
     };
 
     virtualisation.docker.enable = true;
+    virtualisation.virtualbox.host.enable = true;
 
     sound.enable = true;
     hardware.pulseaudio = {
