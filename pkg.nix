@@ -36,6 +36,8 @@
         redshift
 
         arandr
+        powertop
+
         screenkey # displays pressed keys, cool for presentations
 
         rxvt_unicode
