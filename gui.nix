@@ -36,6 +36,7 @@
                 dmenu
                 i3lock
                 i3blocks
+                networkmanager_dmenu
            ];
         };
     };
