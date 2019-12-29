@@ -39,6 +39,11 @@ in
 
     documentation.dev.enable = true;
 
+    services.physlock = {
+      enable = true;
+      allowAnyUser = true;
+    };
+
     users = {
         mutableUsers = false;
 
