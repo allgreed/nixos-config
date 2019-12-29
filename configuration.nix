@@ -21,6 +21,7 @@ in
 
     virtualisation.docker.enable = true;
     virtualisation.virtualbox.host.enable = true;
+    virtualisation.virtualbox.host.enableExtensionPack = true;
 
     sound.enable = true;
     hardware.pulseaudio = {
@@ -54,6 +55,7 @@ in
         };
         # TODO: try mutiple hashing rounds
     };
+    users.extraGroups.vboxusers.members = [ "allgreed" ];
 
     # This value determines the NixOS release with which your system is to be
     # compatible, in order to avoid breaking some software such as database

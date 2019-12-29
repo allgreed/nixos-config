@@ -1,6 +1,6 @@
 { config, pkgs, callPackage, ... }: 
 {
-    nixpkgs.config.allowUnfree = true; # for rambox
+    nixpkgs.config.allowUnfree = true; # for rambox and virtualbox oracle extension pack
 
     environment.systemPackages = with pkgs; [
         python27
