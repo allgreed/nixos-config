@@ -18,6 +18,7 @@
         vimHugeX
         hexcurse
 
+        xorg.xev
         xorg.xmodmap
         xcape
         xclip
