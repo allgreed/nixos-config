@@ -18,6 +18,8 @@
         vimHugeX
         hexcurse
 
+        python37Packages.click # mostly for caching
+
         xorg.xev
         xorg.xmodmap
         xcape
