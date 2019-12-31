@@ -65,6 +65,7 @@
         dnsutils
         wavemon
         sshfs
+        dhcp
         # curl 
         # net-tools
         # openvpn
