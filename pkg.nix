@@ -32,6 +32,7 @@
 
         evince
         vlc
+        mpv
         gnome3.eog # TODO: drop in favour of feh?
         gimp
 
