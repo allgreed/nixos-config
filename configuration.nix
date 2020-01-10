@@ -21,7 +21,7 @@ in
 
     virtualisation.docker.enable = true;
     virtualisation.virtualbox.host.enable = true;
-    virtualisation.virtualbox.host.enableExtensionPack = true;
+    virtualisation.virtualbox.host.enableExtensionPack = true; # this is unfree!
 
     sound.enable = true;
     hardware.pulseaudio = {
@@ -30,13 +30,11 @@ in
     };
 
     time.timeZone = "Europe/Warsaw";
-    # TODO: do this
-    # Select internationalisation properties.
-    # i18n = {
-    #   consoleFont = "Lat2-Terminus16";
-    #   consoleKeyMap = "us";
-    #   defaultLocale = "en_US.UTF-8";
-    # };
+
+    i18n = {
+        consoleUseXkbConfig = true;
+        defaultLocale = "en_GB.UTF-8";
+    };
 
     documentation.dev.enable = true;
 
