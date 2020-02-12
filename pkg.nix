@@ -71,6 +71,7 @@
         wavemon
         sshfs
         dhcp
+        iftop
         # curl 
         # net-tools
         # openvpn
