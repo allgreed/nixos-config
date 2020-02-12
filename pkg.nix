@@ -62,6 +62,9 @@
         git
         ansible 
 
+        pirate-get
+        deluge
+
         jq # manipulate JSON
 
         dnsutils
