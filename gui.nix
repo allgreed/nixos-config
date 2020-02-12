@@ -22,7 +22,7 @@
         displayManager.startx.enable = true;
 
         layout = "pl";
-        xkbOptions = "ctrl:nocaps";
+        xkbOptions = "capslock:ctrl_modifier, shift:both_capslock_cancel";
 
         desktopManager = {
             default = "none";
