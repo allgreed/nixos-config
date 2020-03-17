@@ -24,7 +24,7 @@
         xorg.xmodmap
         xcape
         xclip
-        scrot
+        escrotum
         conky
         imagemagick
 
