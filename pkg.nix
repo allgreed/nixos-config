@@ -18,6 +18,8 @@
         vimHugeX
         hexcurse
 
+        spotify
+
         python37Packages.click # mostly for caching
 
         xorg.xev

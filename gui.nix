@@ -25,7 +25,7 @@
         xkbOptions = "caps:ctrl_modifier, shift:both_capslock_cancel";
 
         desktopManager = {
-            default = "none";
+            default = "none+i3";
             xterm.enable = false;
         };
 
