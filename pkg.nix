@@ -29,6 +29,7 @@
         escrotum
         conky
         imagemagick
+        numlockx
 
         pavucontrol
 
