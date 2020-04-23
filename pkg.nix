@@ -17,6 +17,7 @@
         direnv
         vimHugeX
         hexcurse
+        entr
 
         spotify
 
