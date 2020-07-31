@@ -40,5 +40,8 @@
            ];
         };
     };
+
+  # fix for Workrave not persisting settings
+  services.dbus.packages = with pkgs; [ gnome3.dconf ];
 }
 
