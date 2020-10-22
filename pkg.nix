@@ -2,6 +2,7 @@
 {
     nixpkgs.config.allowUnfree = true; # for rambox and virtualbox oracle extension pack
 
+    # TODO: split this
     environment.systemPackages = with pkgs; [
         python27
         python3
@@ -14,10 +15,20 @@
 
         dotfiles
 
+        # parts of gui depend on it -> blocks
+        acpi
+        kubectl
+        lm_sensors
+
+        gitAndTools.hub
+        gitAndTools.git-open
+
         direnv
         vimHugeX
         hexcurse
         entr
+
+        xorg.xwininfo
 
         spotify
 
@@ -57,6 +68,7 @@
         unzip # TODO: vs unzipNLS?
 
         mkpasswd
+        lastpass-cli
 
         firefox
         rambox
@@ -76,7 +88,6 @@
         sshfs
         dhcp
         iftop
-        # curl 
         # net-tools
         # openvpn
         # wireshark # packet sniffing / analyzing

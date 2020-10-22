@@ -20,8 +20,8 @@ in
     };
 
     virtualisation.docker.enable = true;
-    virtualisation.virtualbox.host.enable = true;
-    virtualisation.virtualbox.host.enableExtensionPack = true; # this is unfree!
+
+    boot.cleanTmpDir = true;
 
     sound.enable = true;
     hardware.pulseaudio = {
@@ -57,9 +57,22 @@ in
             extraGroups = [ "wheel" "networkmanager" "docker" "audio" ];
             initialHashedPassword = "$6$sEk83.F2VbsYW$iILuEeRZZE5aIh87UIze4R7g82JGavVkm3yURcI38Zka5M/djEClUEr0.PWklwdea0UrGKrNAx3B.BKh435Uu0"; # please change the password via local.nix ASAP
         };
+	# TODO: change this to something I know and save it in a secured location
         # TODO: try mutiple hashing rounds
     };
-    users.extraGroups.vboxusers.members = [ "allgreed" ];
+
+    security.sudo.enable = false;
+    security.doas = {
+      enable = true;
+      extraRules = [
+        {
+          users = [ "allgreed" ];
+          persist = true;
+          keepEnv = true;
+          setEnv = [ "HOME=/home/allgreed" ];
+        }
+      ];
+    };
 
     # This value determines the NixOS release with which your system is to be
     # compatible, in order to avoid breaking some software such as database
