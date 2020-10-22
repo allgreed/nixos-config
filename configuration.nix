@@ -8,6 +8,7 @@ in
     imports = [ 
         ./hardware-configuration.nix
         ./pkg.nix
+        ./pizza.nix
         ./networking.nix
         ./gui.nix
       ]

@@ -1,7 +1,5 @@
 { config, pkgs, callPackage, ... }: 
 {
-    nixpkgs.config.allowUnfree = true; # for rambox and virtualbox oracle extension pack
-
     # TODO: split this
     environment.systemPackages = with pkgs; [
         python27
@@ -101,4 +99,3 @@
         # pip pirate-get # command line for the pirate bay
     ];
 }
-
