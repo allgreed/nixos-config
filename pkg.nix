@@ -5,6 +5,7 @@
         python27
         python3
 
+
         htop
         tmux # terminal multiplexer
         ranger # file exploler
@@ -29,6 +30,7 @@
         xorg.xwininfo
 
         spotify
+        teams
 
         python37Packages.click # mostly for caching
 
