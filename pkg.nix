@@ -53,7 +53,9 @@
         gimp
 
         workrave
+
         redshift
+        unclutter
 
         arandr
         powertop
