@@ -22,7 +22,7 @@ in
 
     virtualisation.docker.enable = true;
 
-    boot.cleanTmpDir = true;
+    boot.tmpOnTmpfs = true;
 
     sound.enable = true;
     hardware.pulseaudio = {

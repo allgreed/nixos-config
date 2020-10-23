@@ -3,6 +3,7 @@
 mkdir -p /mnt
 
 mkdir -p /media/ramdisk
+# TODO: mount this in /mnt
 chmod u=rwx,g=rwx,o=rwxt /media/ramdisk
 
 echo 'Now, please write propper passwords into local.nix'
