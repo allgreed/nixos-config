@@ -3,8 +3,12 @@
     # TODO: split this
     environment.systemPackages = with pkgs; [
         python27
-        python3
-
+        (python38.withPackages(ps: with ps; [ 
+          click
+          ptpython 
+          requests
+          i3ipc
+        ]))
 
         htop
         tmux # terminal multiplexer
@@ -32,7 +36,6 @@
         spotify
         teams
 
-        python37Packages.click # mostly for caching
 
         xorg.xev
         xorg.xmodmap
@@ -78,7 +81,6 @@
         gnumake # build / script automation
         expect # interactive script automation utility
         git
-        ansible 
 
         pirate-get
         deluge
@@ -98,7 +100,6 @@
         # whois
         # arp-scan # arp discovery
     
-        # pip ptpython # improved Python shell
         # pip pygments-style-solarized # colorscheme
         # pip pirate-get # command line for the pirate bay
     ];

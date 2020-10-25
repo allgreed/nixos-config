@@ -3,6 +3,9 @@ let
     localConfiguration = if builtins.pathExists ./local.nix
         then [ ./local.nix ]
         else [];
+    nonFreeConfiguration = if builtins.pathExists ./pizza.nix
+        then [ ./pizza.nix ]
+        else [];
 in
 {
     imports = [ 
@@ -12,6 +15,7 @@ in
         ./networking.nix
         ./gui.nix
       ]
+      ++ nonFreeConfiguration
       ++ localConfiguration;
 
     fileSystems."/media/ramdisk" = {
@@ -43,6 +47,10 @@ in
       enable = true;
       allowAnyUser = true;
     };
+
+    services.printing.enable = true;
+
+    programs.ssh.startAgent = true;
 
     # TODO: override nixos-help setting and don't display the help message, but keep everything else
     services.mingetty.helpLine = ''
