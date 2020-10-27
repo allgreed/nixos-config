@@ -50,7 +50,10 @@ in
 
     services.printing.enable = true;
 
-    programs.ssh.startAgent = true;
+    programs.ssh = {
+      startAgent = true;
+      agentTimeout = "1h";
+    };
 
     # TODO: override nixos-help setting and don't display the help message, but keep everything else
     services.mingetty.helpLine = ''
