@@ -34,7 +34,7 @@
             extraPackages = with pkgs; [
                 feh
                 dmenu
-                i3lock
+                i3lock-color
                 i3blocks
                 networkmanager_dmenu
            ];
