@@ -52,7 +52,9 @@ in
 
     programs.ssh = {
       startAgent = true;
-      agentTimeout = "1h";
+      extraConfig = ''
+        AddKeysToAgent yes
+      '';
     };
 
     services.zfs = {
