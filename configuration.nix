@@ -42,7 +42,14 @@ in
       allowAnyUser = true;
     };
 
-    services.printing.enable = true;
+    services.printing = {
+      enable = true;
+      drivers = with pkgs; [
+        brlaser
+        brgenml1lpr
+        brgenml1cupswrapper
+      ];
+    };
 
     programs.ssh = {
       startAgent = true;
