@@ -61,6 +61,15 @@ in
     services.zfs = {
       trim.enable = true;
       autoScrub.enable = true;
+      autoSnapshot = {
+        enable = true;
+        flags = "-k -p --utc";
+        frequent = 4;
+        hourly = 24;
+        daily = 7;
+        weekly = 0;
+        monthly = 0;
+      };
     };
 
     # TODO: override nixos-help setting and don't display the help message, but keep everything else
