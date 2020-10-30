@@ -1,5 +1,66 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+if [ ! -d /home/allgreed/Dotfiles ]; then
+    git clone https://github.com/allgreed/dotfiles.git /home/allgreed/Dotfiles 
+fi
+
+git --git-dir=/etc/nixos/.git remote set-url --push origin git@github.com:allgreed/nixos-config.git
+git --git-dir=/home/allgreed/Dotfiles/.git remote set-url --push origin git@github.com:allgreed/dotfiles.git
 
 mkdir -p /mnt /media
 
-echo 'Now, please write propper passwords into local.nix'
+read -ep 'Hostname: ' hostname
+hashed_password=$(mkpasswd -m sha512crypt)
+zpool=$(zpool list -o name | head -n 2 | tail -n 1)
+pool_devices=$(zpool list -vHP $zpool | grep dev | cut -f 2)
+
+tmp=$(mktemp)
+cat <<EOF > $tmp
+{ config, pkgs, ... }:
+
+{
+  boot.loader.grub.devices = [
+$(for d in $pool_devices ; do echo "    \"$d\""; done)
+  ];
+
+  # machine identification
+  networking.hostName = "$hostname";
+  networking.hostId = "$(head -c 8 /etc/machine-id)";
+
+  # secrets
+  users.users."allgreed".hashedPassword = "$hashed_password";
+}
+EOF
+
+echo '=================================================='
+echo 'Following contents will be written to ./local.nix:'
+echo '=================================================='
+cat $tmp
+
+
+echo '===================='
+echo 'The differences are:'
+echo '===================='
+diff '/etc/nixos/local.nix' $tmp || true
+
+echo
+read -p "Do you approve of this plan? " -n 1 -r
+echo
+
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    if [ -f ./local.nix ]; then
+        read -p "local.nix already exists, do you want to overwrite? " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]
+        then
+            echo 'writing backup to ./local.nix.bak'
+            mv -f '/etc/nixos/local.nix' '/etc/nixos/local.nix.bak'
+        else
+            exit
+        fi
+    fi
+
+    mv --no-clobber $tmp '/etc/nixos/local.nix'
+fi
