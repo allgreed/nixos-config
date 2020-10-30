@@ -21,6 +21,11 @@ in
     virtualisation.docker.enable = true;
 
     boot.tmpOnTmpfs = true;
+    boot.loader.grub.enable = true;
+    boot.loader.grub.version = 2;
+    # ZFS required, but generally won't hurt
+    boot.supportedFilesystems = [ "zfs" ];
+    boot.loader.grub.copyKernels = true;
 
     sound.enable = true;
     hardware.pulseaudio = {
