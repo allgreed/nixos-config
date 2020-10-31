@@ -8,7 +8,8 @@ fi
 git --git-dir=/etc/nixos/.git remote set-url --push origin git@github.com:allgreed/nixos-config.git
 git --git-dir=/home/allgreed/Dotfiles/.git remote set-url --push origin git@github.com:allgreed/dotfiles.git
 
-mkdir -p /mnt /media
+mkdir -p /mnt /media /var/cache/iso
+chown allgreed /var/cache/iso
 
 read -ep 'Hostname: ' hostname
 hashed_password=$(mkpasswd -m sha512crypt)
