@@ -36,6 +36,7 @@
         spotify
         teams
 
+        tree
 
         xorg.xev
         xorg.xmodmap
