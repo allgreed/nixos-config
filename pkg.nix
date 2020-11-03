@@ -30,6 +30,7 @@
         vimHugeX
         hexcurse
         entr
+        tmate
 
         xorg.xwininfo
 
