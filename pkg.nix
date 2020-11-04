@@ -94,6 +94,7 @@
         sshfs
         dhcp
         iftop
+        traceroute
         # net-tools
         # openvpn
         # wireshark # packet sniffing / analyzing
