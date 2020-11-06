@@ -65,3 +65,5 @@ then
 
     mv --no-clobber $tmp '/etc/nixos/local.nix'
 fi
+
+chmod 400 './local.nix'
