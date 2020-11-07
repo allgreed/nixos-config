@@ -14,6 +14,7 @@
         tmux # terminal multiplexer
         ranger # file exploler
 
+        bc
         manpages
 
         dotfiles
