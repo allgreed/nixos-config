@@ -13,7 +13,7 @@ chown allgreed /var/cache/iso
 
 read -ep 'Hostname: ' hostname
 hashed_password=$(mkpasswd -m sha512crypt)
-zpool=$(zpool list -o name | head -n 2 | tail -n 1)
+zpool=$(zpool list -o name -H | tail -n 1)
 pool_devices=$(zpool list -vHP $zpool | grep dev | cut -f 2)
 
 tmp=$(mktemp)
@@ -46,15 +46,15 @@ echo '===================='
 diff '/etc/nixos/local.nix' $tmp || true
 
 echo
-read -p "Do you approve of this plan? " -n 1 -r
+read -p "Do you approve of this plan? (Y/nN) " -n 1 -r
 echo
 
-if [[ $REPLY =~ ^[Yy]$ ]]
+if [[ $REPLY =~ ^[Y]$ ]]
 then
     if [ -f ./local.nix ]; then
-        read -p "local.nix already exists, do you want to overwrite? " -n 1 -r
+        read -p "local.nix already exists, do you want to overwrite? (Y/nN) " -n 1 -r
         echo
-        if [[ $REPLY =~ ^[Yy]$ ]]
+        if [[ $REPLY =~ ^[Y]$ ]]
         then
             echo 'writing backup to ./local.nix.bak'
             mv -f '/etc/nixos/local.nix' '/etc/nixos/local.nix.bak'
@@ -66,4 +66,7 @@ then
     mv --no-clobber $tmp '/etc/nixos/local.nix'
 fi
 
-chmod 400 './local.nix'
+chmod 600 '/etc/nixos/local.nix'
+
+chmod --recursive 600 '/etc/nixos/setup'
+chmod 700 '/etc/nixos/setup/init'

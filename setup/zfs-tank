@@ -1,0 +1,5 @@
+# vim: set ft=bash :
+# TODO: choose the initial drive
+
+# TODO: partition it
+# TODO: setup a single vdev pool with that drive and call it tank

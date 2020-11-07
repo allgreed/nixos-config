@@ -1,0 +1,5 @@
+# vim: set ft=bash :
+# TODO: choose the mirrored drive
+
+# TODO: copy partition table from single vdev from tank
+# TODO: add drive to the mirror

@@ -1,0 +1,23 @@
+# vim: set ft=bash :
+zfs create -o mountpoint=none -o refreservation=1G tank/reserved
+
+zfs create -o mountpoint=none tank/local
+zfs create -o mountpoint=legacy -o atime=off tank/local/nix
+zfs create -o mountpoint=legacy tank/local/user-cache
+
+zfs create -o mountpoint=none -o com.sun:auto-snapshot=true tank/data
+zfs create -o mountpoint=legacy tank/data/home
+zfs create -o mountpoint=legacy -o xattr=sa -o acltype=posixacl tank/data/root
+
+# group order matters
+mount -t zfs tank/data/root /mnt
+
+mount -t zfs tank/data/home /mnt/home
+mount -t zfs tank/local/nix /mnt/nix
+
+mkdir -p /home/allgreed/.cache
+mount -t zfs tank/local/user-cache /mnt/home/allgreed/.cache
+
+echo
+echo 'Now generate hardware configuration!'
+echo
