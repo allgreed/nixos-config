@@ -8,6 +8,7 @@
           ptpython 
           requests
           i3ipc
+          subliminal
           grip
         ]))
 
