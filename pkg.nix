@@ -12,6 +12,10 @@
           grip
         ]))
 
+        ntfs3g
+
+        google-chrome
+
         htop
         tmux # terminal multiplexer
         ranger # file exploler

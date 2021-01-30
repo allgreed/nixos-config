@@ -5,5 +5,6 @@
     "spotify"
     "brgenml1lpr"
     "teams"
+    "google-chrome"
   ];
 }
