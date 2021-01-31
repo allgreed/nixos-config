@@ -12,6 +12,7 @@
           grip
         ]))
 
+        pv
         ntfs3g
 
         google-chrome
