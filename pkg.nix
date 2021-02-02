@@ -12,6 +12,8 @@
           grip
         ]))
 
+        calibre
+
         pv
         ntfs3g
 
