@@ -16,6 +16,7 @@
 
         pv
         ntfs3g
+        hledger
 
         google-chrome
 
