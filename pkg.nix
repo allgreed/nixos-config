@@ -13,6 +13,7 @@
         ]))
 
         calibre
+        et
 
         pv
         ntfs3g
