@@ -20,6 +20,9 @@
         hledger
         hledger-iadd
 
+        acpilight
+        xorg.xbacklight
+
         google-chrome
 
         htop
