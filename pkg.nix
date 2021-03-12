@@ -20,14 +20,13 @@
         hledger
         hledger-iadd
 
-        acpilight
-        xorg.xbacklight
-
         google-chrome
 
         htop
         tmux # terminal multiplexer
         ranger # file exploler
+
+        minicom
 
         bc
         manpages
