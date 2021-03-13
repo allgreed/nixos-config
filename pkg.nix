@@ -55,9 +55,9 @@
         tree
 
         # TODO: does this belong to gui?
+        acpilight
         xorg.xev
         xorg.xmodmap
-        acpilight
         xcape
         xclip
         escrotum
