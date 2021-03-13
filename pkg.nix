@@ -54,8 +54,10 @@
 
         tree
 
+        # TODO: does this belong to gui?
         xorg.xev
         xorg.xmodmap
+        acpilight
         xcape
         xclip
         escrotum
