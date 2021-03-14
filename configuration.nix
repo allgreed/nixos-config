@@ -35,8 +35,8 @@ in
 
     time.timeZone = "Europe/Warsaw";
 
+    console.useXkbConfig = true;
     i18n = {
-        consoleUseXkbConfig = true;
         defaultLocale = "en_GB.UTF-8";
     };
 

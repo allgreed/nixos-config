@@ -19,13 +19,15 @@
         enable = true;
 
         autorun = false;
-        displayManager.startx.enable = true;
+        displayManager = {
+          startx.enable = true;
+          defaultSession = "none+i3";
+        };
 
         layout = "pl";
         xkbOptions = "caps:ctrl_modifier, shift:both_capslock_cancel";
 
         desktopManager = {
-            default = "none+i3";
             xterm.enable = false;
         };
 
