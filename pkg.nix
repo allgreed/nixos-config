@@ -15,6 +15,8 @@
         calibre
         et
 
+        sox
+
         pv
         ntfs3g
         hledger
