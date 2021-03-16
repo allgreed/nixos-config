@@ -6,5 +6,7 @@
     "brgenml1lpr"
     "teams"
     "google-chrome"
+    "zoom-us"
+    "faac" # for zoom
   ];
 }

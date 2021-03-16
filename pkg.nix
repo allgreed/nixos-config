@@ -109,6 +109,8 @@
 
         jq # manipulate JSON
 
+        zoom-us
+
         dnsutils
         wavemon
         sshfs
