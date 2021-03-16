@@ -70,4 +70,4 @@ chmod 600 '/etc/nixos/local.nix'
 
 chmod --recursive 600 '/etc/nixos/setup'
 chmod +xr '/etc/nixos/setup'
-chmod 700 '/etc/nixos/setup/init'
+chmod 744 '/etc/nixos/setup/init'
