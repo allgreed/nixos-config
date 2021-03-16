@@ -16,6 +16,7 @@
         et
 
         sox
+        linuxPackages.usbip
 
         pv
         ntfs3g

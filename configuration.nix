@@ -26,6 +26,8 @@ in
     # ZFS required, but generally won't hurt
     boot.supportedFilesystems = [ "zfs" ];
     boot.loader.grub.copyKernels = true;
+    boot.extraModulePackages = with config.boot.kernelPackages; [ usbip ];
+    boot.kernelModules = [ "vhci-hcd" ]; # for usbip
 
     sound.enable = true;
     hardware.pulseaudio = {
