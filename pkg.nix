@@ -117,15 +117,12 @@
         dhcp
         iftop
         traceroute
-        # net-tools
-        # openvpn
-        # wireshark # packet sniffing / analyzing
+        nettools
+        openvpn
+        wireshark
+        nmap
+        whois
+        arp-scan
         # wakeonlan
-        # nmap
-        # whois
-        # arp-scan # arp discovery
-    
-        # pip pygments-style-solarized # colorscheme
-        # pip pirate-get # command line for the pirate bay
     ];
 }
