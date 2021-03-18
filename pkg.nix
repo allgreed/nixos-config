@@ -58,7 +58,6 @@
         tree
 
         # TODO: does this belong to gui?
-        acpilight
         xorg.xev
         xorg.xmodmap
         xcape

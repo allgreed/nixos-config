@@ -36,6 +36,7 @@ in
         package = pkgs.pulseaudioFull;
     };
   hardware.bluetooth.enable = true;
+  programs.light.enable = true;
 
     time.timeZone = "Europe/Warsaw";
 
