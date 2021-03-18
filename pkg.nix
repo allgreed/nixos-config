@@ -57,7 +57,9 @@
 
         tree
 
+        brightnessctl
         # TODO: does this belong to gui?
+        acpilight # this is needed for `xbacklight` - for reporting
         xorg.xev
         xorg.xmodmap
         xcape
