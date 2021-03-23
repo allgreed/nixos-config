@@ -43,7 +43,7 @@ in
   };
   hardware.bluetooth.enable = true;
 
-    time.timeZone = "Europe/Warsaw";
+  services.tzupdate.enable = true;
 
   console.useXkbConfig = true;
   i18n = {
