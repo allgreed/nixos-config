@@ -112,6 +112,8 @@
 
         zoom-us
 
+        borgbackup
+
         dnsutils
         wavemon
         sshfs
