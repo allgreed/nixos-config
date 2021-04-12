@@ -14,6 +14,7 @@ in
     ./pizza.nix
     ./networking.nix
     ./gui.nix
+    ./borg.nix
     ]
     ++ nonFreeConfiguration
     ++ localConfiguration;
