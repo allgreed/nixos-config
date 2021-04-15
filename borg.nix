@@ -4,8 +4,6 @@ let
     # for now
     ".config"
     ".arduino15"
-    ".mozilla"
-    "Downloads" # until I can figure out some more advanced patterns, like disregarding certain filtetypes + sizes
 
     # caches
     ".cache"
@@ -29,8 +27,12 @@ let
     ".esd_auth"
     ".pki"
 
+    # should be regularely cleaned
+    "Downloads"
+
     # nothing of value
     ".zoom"
+    ".mozilla" # all the settings via home-manager
   ];
 
   excludesWithPath = path: excludes: map (x: path + "/" + x) excludes;
