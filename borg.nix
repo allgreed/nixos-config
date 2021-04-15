@@ -2,7 +2,10 @@
 let 
   homeExcludes = [
     # for now
-    ".config"
+    "./config/Rambox/"
+    "./config/Microsoft/"
+    "./config/google-chrome/"
+    "./config/spotify/"
     ".arduino15"
 
     # caches
