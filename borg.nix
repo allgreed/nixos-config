@@ -2,7 +2,7 @@
 let 
   homeExcludes = [
     # for now
-    "config/Rambox/"
+    ".config/Rambox/"
     ".arduino15"
 
     # caches
@@ -19,7 +19,7 @@ let
     "*/.venv"
     "*/__pycache__"
     "*/.pytest_cache"
-    "config/spotify/"
+    ".config/spotify/"
 
     # keys
     "Keys"
@@ -34,8 +34,8 @@ let
     # nothing of value
     ".zoom"
     ".mozilla" # all the settings via home-manager
-    "config/Microsoft/"
-    "config/google-chrome/"
+    ".config/Microsoft/"
+    ".config/google-chrome/"
   ];
 
   excludesWithPath = path: excludes: map (x: path + "/" + x) excludes;
