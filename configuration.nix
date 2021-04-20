@@ -64,7 +64,7 @@ in
       #brlaser
       #brgenml1lpr
       #brgenml1cupswrapper
-      cups-brother-hl1210w
+      #cups-brother-hl1210w
     ];
   };
 
