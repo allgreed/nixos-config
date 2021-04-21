@@ -84,7 +84,7 @@ in
       frequent = 4;
       hourly = 24;
       daily = 7;
-      weekly = 0;
+      weekly = 4;
       monthly = 0;
     };
   };
