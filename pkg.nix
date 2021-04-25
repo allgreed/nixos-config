@@ -45,8 +45,8 @@
         gitAndTools.git-open
 
         direnv
+        nix-direnv
         vimHugeX
-        hexcurse
         entr
         tmate
 

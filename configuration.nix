@@ -89,6 +89,15 @@ in
     };
   };
 
+  # for nix-direnv
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
+  environment.pathsToLink = [
+    "/share/nix-direnv"
+  ];
+
   # TODO: override nixos-help setting and don't display the help message, but keep everything else
   services.mingetty.helpLine = ''
     [1;32m[1;41mNo gods or kings.
