@@ -53,6 +53,15 @@ in
       user = "allgreed";
       paths = "/home/allgreed";
       exclude = excludesWithPath paths homeExcludes;
+      readWritePaths = [
+        "/var/state/borgjobs"
+      ];
+      postCreate = ''
+        echo 
+        mkdir -p /var/state/borgjobs/home/last
+        echo "$archiveName" > /var/state/borgjobs/home/last/archive
+        date +%s%N > /var/state/borgjobs/home/last/time
+      '';
     };
   };
   environment.etc."borgjobs/home/borgignore" = {
