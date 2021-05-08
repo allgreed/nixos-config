@@ -90,7 +90,7 @@ in
         echo 
         mkdir -p /var/state/borgjobs/home/last
         echo "$archiveName" > /var/state/borgjobs/home/last/archive
-        date +%s%N > /var/state/borgjobs/home/last/time
+        date --utc +%s > /var/state/borgjobs/home/last/time
       '';
     };
   };
