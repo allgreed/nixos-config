@@ -7,6 +7,7 @@
     "teams"
     "google-chrome"
     "zoom-us"
+    "zoom"
     "faac" # for zoom
   ];
 }

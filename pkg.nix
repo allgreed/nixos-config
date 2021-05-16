@@ -47,6 +47,7 @@
         direnv
         nix-direnv
         vimHugeX
+        neovim
         entr
         tmate
 
