@@ -15,6 +15,8 @@ in
     ./networking.nix
     ./gui.nix
     ./borg.nix
+    # TODO: guard this o.0?
+    ./cachix.nix
     ]
     ++ nonFreeConfiguration
     ++ localConfiguration;

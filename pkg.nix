@@ -1,5 +1,10 @@
 { config, pkgs, callPackage, ... }: 
 {
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
     # TODO: split this
     environment.systemPackages = with pkgs; [
         python27
@@ -11,6 +16,8 @@
           subliminal
           grip
         ]))
+
+        cachix
 
         calibre
         et
