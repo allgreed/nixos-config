@@ -18,6 +18,7 @@
         ]))
 
         cachix
+        rnix-lsp
 
         calibre
         et
