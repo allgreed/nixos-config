@@ -19,6 +19,8 @@
 
         cachix
         rnix-lsp
+        bat
+        tealdeer
 
         calibre
         et

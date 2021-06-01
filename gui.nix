@@ -5,6 +5,9 @@
     fonts.fonts = with pkgs; [
         source-code-pro
         font-awesome-ttf
+        font-awesome_5
+        font-awesome_4
+        nerdfonts
 
         #noto-fonts
         #noto-fonts-cjk
