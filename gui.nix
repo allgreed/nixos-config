@@ -5,17 +5,7 @@
     fonts.fonts = with pkgs; [
         source-code-pro
         font-awesome-ttf
-        font-awesome_5
-        font-awesome_4
-        nerdfonts
-
-        #noto-fonts
-        #noto-fonts-cjk
-        #noto-fonts-emoji
-        #liberation_ttf
-        #mplus-outline-fonts
-        #dina-font
-        #proggyfonts
+        # TODO: fix terminal fonts so that lsd can be used
     ];
 
     services.xserver = {
