@@ -126,6 +126,8 @@ in
     # TODO: try mutiple hashing rounds
   };
 
+  services.trezord.enable = true;
+
   security = {
     sudo.enable = false;
     doas = {
