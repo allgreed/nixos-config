@@ -17,6 +17,8 @@
           grip
         ]))
 
+        wally-cli
+
         cachix
         rnix-lsp
         bat
@@ -76,6 +78,7 @@
         xcape
         xclip
         escrotum
+        scrot # for locking, because escrotum is too slow :c
         conky
         imagemagick
         numlockx
