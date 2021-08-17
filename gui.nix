@@ -18,7 +18,7 @@
         };
 
         layout = "pl";
-        xkbOptions = "caps:ctrl_modifier, shift:both_capslock_cancel";
+        xkbOptions = "caps:ctrl_modifier";
 
         desktopManager = {
             xterm.enable = false;
