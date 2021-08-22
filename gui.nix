@@ -51,6 +51,7 @@
         i3lock-color
         i3blocks
         networkmanager_dmenu
+        networkmanagerapplet
         ];
       };
   };
