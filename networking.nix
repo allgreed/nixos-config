@@ -26,6 +26,8 @@
       no-resolv
       no-poll
     '';
+
+    resolveLocalQueries = true;
   };
     
     # Open ports in the firewall.
