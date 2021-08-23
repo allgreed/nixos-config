@@ -1,6 +1,7 @@
 { config, pkgs, callPackage, ... }: 
 {
   nixpkgs.overlays = [
+    # maybe I can tweak this to use nvim 0.0.5 from unstable, I don't really want to track nightly...
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
     }))

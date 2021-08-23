@@ -106,7 +106,7 @@ in
   };
 
   # TODO: override nixos-help setting and don't display the help message, but keep everything else
-  services.mingetty.helpLine = ''
+  services.getty.helpLine = ''
     [1;32m[1;41mNo gods or kings.
         Only men.    [0m
   '';
