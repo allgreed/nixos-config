@@ -1,10 +1,16 @@
 { config, pkgs, callPackage, ... }: 
+let
+  nixpkgs = builtins.fetchGit {
+    # 2021-08-24
+    url = "https://github.com/nixos/nixpkgs/";
+    ref = "refs/heads/nixos-unstable";
+    rev = "253aecf69ed7595aaefabde779aa6449195bebb7";
+    # obtain via `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
+  };
+  unstablePkgs = import nixpkgs { config = {}; };
+in
 {
   nixpkgs.overlays = [
-    # maybe I can tweak this to use nvim 0.0.5 from unstable, I don't really want to track nightly...
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
   ];
     # TODO: split this
     environment.systemPackages = with pkgs; [
@@ -60,7 +66,8 @@
         direnv
         nix-direnv
         vimHugeX
-        neovim
+        # TODO: get it back to stable one the version catches up
+        unstablePkgs.neovim
         entr
         tmate
 
