@@ -121,7 +121,7 @@ in
         lastpass-cli
 
         firefox
-        rambox
+        unstablePkgs.rambox
 
         gnumake # build / script automation
         expect # interactive script automation utility

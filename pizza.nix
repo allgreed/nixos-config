@@ -15,8 +15,4 @@
     "zoom"
     "faac" # for zoom
   ];
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "rambox-0.7.7"
-  ];
 }
