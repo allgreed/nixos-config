@@ -53,6 +53,8 @@
         networkmanager_dmenu
         networkmanagerapplet
         dunst
+
+        # TODO: move this to a `package` stanza
         xorg.xwininfo
         brightnessctl
         acpilight # this is needed for `xbacklight` - for reporting
