@@ -71,25 +71,12 @@ in
         entr
         tmate
 
-        xorg.xwininfo
-
         spotify
         teams
 
         tree
 
-        brightnessctl
-        # TODO: does this belong to gui?
-        acpilight # this is needed for `xbacklight` - for reporting
-        xorg.xev
-        xorg.xmodmap
-        xcape
-        xclip
-        escrotum
-        scrot # for locking, because escrotum is too slow :c
-        conky
         imagemagick
-        numlockx
 
         pavucontrol
 
@@ -100,17 +87,9 @@ in
         gnome3.eog # TODO: drop in favour of feh?
         gimp
 
-        workrave
-
-        redshift
-        unclutter
-
         arandr
         powertop
 
-        screenkey # displays pressed keys, cool for presentations
-
-        rxvt_unicode
         #urxvt_font_size # TODO: how to make this work?
 
         graphviz

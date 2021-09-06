@@ -52,6 +52,23 @@
         i3blocks
         networkmanager_dmenu
         networkmanagerapplet
+        dunst
+        xorg.xwininfo
+        brightnessctl
+        acpilight # this is needed for `xbacklight` - for reporting
+        xorg.xev
+        xorg.xmodmap
+        xcape
+        xclip
+        escrotum
+        scrot # for locking, because escrotum is too slow :c
+        conky
+        numlockx
+        workrave
+        redshift
+        unclutter
+        screenkey # displays pressed keys, cool for presentations
+        rxvt_unicode
         ];
       };
   };
