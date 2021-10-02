@@ -99,7 +99,6 @@ in
         mkpasswd
         lastpass-cli
 
-        firefox
         unstablePkgs.rambox
 
         gnumake # build / script automation
