@@ -28,9 +28,13 @@ in
     loader.grub.enable = true;
     loader.grub.version = 2;
 
+    loader.grub.zfsSupport = true;
+    # TODO: how much of this is redundant with zfsSupport to true?
     # ZFS required, but generally won't hurt
     supportedFilesystems = [ "zfs" ];
     loader.grub.copyKernels = true;
+    # ???
+    initrd.supportedFilesystems = [ "zfs" ];
 
     # for usbip
     extraModulePackages = with config.boot.kernelPackages; [ usbip ];
@@ -102,7 +106,7 @@ in
 
   nix.gc = {
     automatic = true;
-    dates = "weekly";
+    dates = "monthly";
   };
 
   # TODO: override nixos-help setting and don't display the help message, but keep everything else
