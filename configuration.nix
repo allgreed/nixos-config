@@ -48,7 +48,7 @@ in
       package = pkgs.pulseaudioFull;
       extraModules = [ pkgs.pulseaudio-modules-bt ];
   };
-  hardware.bluetooth.enable = true;
+  #hardware.bluetooth.enable = true;
 
   services.tzupdate.enable = true;
 
