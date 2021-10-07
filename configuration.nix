@@ -107,6 +107,7 @@ in
   nix.gc = {
     automatic = true;
     dates = "monthly";
+    persistent = true;
   };
 
   # TODO: override nixos-help setting and don't display the help message, but keep everything else

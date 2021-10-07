@@ -100,6 +100,7 @@ in
         lastpass-cli
 
         unstablePkgs.rambox
+        ferdi
 
         gnumake # build / script automation
         expect # interactive script automation utility
