@@ -55,6 +55,8 @@ in
 
         dotfiles
 
+        gnupg1
+
         # parts of gui depend on it -> blocks
         acpi
         kubectl
