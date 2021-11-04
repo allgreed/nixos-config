@@ -30,11 +30,12 @@
     resolveLocalQueries = true;
   };
     
-    # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
+  # Open ports in the firewall.
+  # jellyfin
+   networking.firewall.allowedTCPPorts = [ 8096 ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
 
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
 }
 
