@@ -46,7 +46,7 @@ in
       enable = true;
       support32Bit = true;
       package = pkgs.pulseaudioFull;
-      extraModules = [ pkgs.pulseaudio-modules-bt ];
+      #extraModules = [ pkgs.pulseaudio-modules-bt ];
   };
   #hardware.bluetooth.enable = true;
 
