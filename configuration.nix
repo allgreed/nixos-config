@@ -47,6 +47,7 @@ in
       support32Bit = true;
       package = pkgs.pulseaudioFull;
       #extraModules = [ pkgs.pulseaudio-modules-bt ];
+      extraConfig = "unload-module module-role-cork"; # prevents Teams/whatnot from muting other streams
   };
   #hardware.bluetooth.enable = true;
 
