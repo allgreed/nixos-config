@@ -49,8 +49,7 @@ in
       #extraModules = [ pkgs.pulseaudio-modules-bt ];
       extraConfig = "unload-module module-role-cork"; # prevents Teams/whatnot from muting other streams
   };
-  #hardware.bluetooth.enable = true;
-
+  services.spotifyd.enable = true;
   services.tzupdate.enable = true;
 
   console.useXkbConfig = true;
