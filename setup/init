@@ -15,6 +15,8 @@ chown allgreed /var/state/gmail-scrapper
 
 read -ep 'Hostname: ' hostname
 hashed_password=$(mkpasswd -m sha512crypt)
+read -ep 'Spotify username: ' spotify_username
+read -ep 'Spotify password: ' spotify_password
 zpool=$(zpool list -o name -H | tail -n 1)
 pool_devices=$(zpool list -vHP $zpool | grep dev | cut -f 2)
 
@@ -33,6 +35,11 @@ $(for d in $pool_devices ; do echo "    \"$d\""; done)
 
   # secrets
   users.users."allgreed".hashedPassword = "$hashed_password";
+  services.spotifyd.config = ''
+    [global]
+    username = "$spotify_username"
+    password = "$spotify_password"
+  '';
 }
 EOF
 
