@@ -10,6 +10,7 @@
 
     servers = [
       # TODO: inform me if the query had to be resolved by backup and actually enable backup
+      "/lan/192.168.69.1"
       "195.10.195.195"
       "194.36.144.87"
       "91.217.137.37"
