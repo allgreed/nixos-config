@@ -42,26 +42,20 @@ let
     key = "borgbackupMonitor";
     _file = "borgbackupMonitor";
     config.systemd.services = {
-      # TODO: uncomment and make sure it does what I want
-      #"notify-problems@" = {
-        #enable = true;
-        #serviceConfig.User = "danbst";
-        #environment.SERVICE = "%i";
-        #script = ''
-          #export $(cat /proc/$(${pkgs.procps}/bin/pgrep "gnome-session" -u "$USER")/environ |grep -z '^DBUS_SESSION_BUS_ADDRESS=')
-          #${pkgs.libnotify}/bin/notify-send -u critical "$SERVICE FAILED!" "Run journalctl -u $SERVICE for details"
-        #'';
-      #};
+      "notify-problems@" = {
+        enable = true;
+        serviceConfig.User = "allgreed";
+        environment.SERVICE = "%i";
+        script = ''
+          export $(/run/current-system/sw/bin/cat /proc/$(/run/current-system/sw/bin/pgrep "xinit" -u "$USER")/environ | grep -z '^DBUS_SESSION_BUS_ADDRESS=')
+          /run/current-system/sw/bin/dunstify -a borgbackup-service "backup failed" "$SERVICE and needs to be retriggered manually" -u 2
+        '';
+      };
     } // flip mapAttrs' config.services.borgbackup.jobs (name: value:
       nameValuePair "borgbackup-job-${name}" {
-        # TODO: uncomment and make sure it does what I want
-
-        #unitConfig.OnFailure = "notify-problems@%i.service";
-        # TODO: add sleep 1 instead of busy loop
-        # TODO: use the backup host -> I don't actually care about google.com
-        #/run/current-system/sw/bin/ssh
+        unitConfig.OnFailure = "notify-problems@%i.service";
         preStart = lib.mkBefore ''
-          until /run/wrappers/bin/ping google.com -c1 -q >/dev/null; do /run/current-system/sw/bin/sleep 1; done
+          until /run/wrappers/bin/ping bootleg.tech -c1 -q >/dev/null; do /run/current-system/sw/bin/sleep 1; done
         '';
       }
     );

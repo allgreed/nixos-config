@@ -110,6 +110,8 @@ in
         pirate-get
         deluge
 
+        taskwarrior
+
         jq # manipulate JSON
 
         zoom-us
