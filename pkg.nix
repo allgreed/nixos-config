@@ -20,6 +20,7 @@ in
           ptpython 
           requests
           i3ipc
+          tasklib
           subliminal
           grip
         ]))
