@@ -9,8 +9,8 @@
     enable = true;
 
     servers = [
-      # TODO: inform me if the query had to be resolved by backup and actually enable backup
       "/lan/192.168.69.1"
+      # TODO: inform me if the query had to be resolved by backup and actually enable backup
       "195.10.195.195"
       "194.36.144.87"
       "91.217.137.37"
@@ -30,13 +30,5 @@
 
     resolveLocalQueries = true;
   };
-    
-  # Open ports in the firewall.
-  # jellyfin
-   networking.firewall.allowedTCPPorts = [ 8096 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 }
 
