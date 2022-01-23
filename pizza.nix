@@ -7,8 +7,6 @@
 
     "brgenml1lpr"
 
-    "teams"
-
     "google-chrome"
 
     "zoom-us"

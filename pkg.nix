@@ -74,7 +74,6 @@ in
         tmate
 
         spotify
-        teams
 
         tree
 
