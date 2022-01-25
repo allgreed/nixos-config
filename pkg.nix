@@ -22,7 +22,6 @@ in
           i3ipc
           tasklib
           subliminal
-          grip
         ]))
 
         wally-cli
