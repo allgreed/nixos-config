@@ -49,7 +49,10 @@ in
       extraConfig = "unload-module module-role-cork"; # prevents Teams/whatnot from muting other streams
   };
   services.spotifyd.enable = true;
+
   services.tzupdate.enable = true;
+  
+  services.tlp.enable = true;
 
   console.useXkbConfig = true;
   i18n = {
