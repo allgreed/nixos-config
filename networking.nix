@@ -30,5 +30,8 @@
 
     resolveLocalQueries = true;
   };
+
+  # apparently Spotify needs this :c
+  networking.firewall.allowedTCPPorts = [ 57621 ];
 }
 
