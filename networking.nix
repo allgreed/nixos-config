@@ -31,7 +31,12 @@
     resolveLocalQueries = true;
   };
 
-  # apparently Spotify needs this :c
+  # apparently stock Spotify client needs this :c
   networking.firewall.allowedTCPPorts = [ 57621 ];
-}
 
+  programs.captive-browser = {
+    enable = true;
+    # TODO: this isn't terribly portable
+    interface = "wlp3s0";
+  };
+}
