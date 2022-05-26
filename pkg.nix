@@ -85,7 +85,9 @@ in
         mpv
         enca # character encoding detecter and transformer
         gnome3.eog # TODO: drop in favour of feh?
+
         gimp
+        openscad
 
         arandr
         powertop
