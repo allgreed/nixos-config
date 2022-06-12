@@ -31,6 +31,8 @@ in
         bat
         tealdeer
 
+        appimage-run
+
         calibre
         et
 
