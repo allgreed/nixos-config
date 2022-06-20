@@ -33,6 +33,8 @@
 
   # apparently stock Spotify client needs this :c
   networking.firewall.allowedTCPPorts = [ 57621 ];
+  # TODO: what are the samba ports? how to enable them temporarly?
+  #networking.firewall.enable = false;
 
   programs.captive-browser = {
     enable = true;

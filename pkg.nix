@@ -25,6 +25,7 @@ in
         ]))
 
         wally-cli
+        smbclient
 
         cachix
         rnix-lsp
