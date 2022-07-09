@@ -2,6 +2,7 @@
 {
   networking.networkmanager = {
     enable = true;
+    # comment the line below to enable some of the captie portal-based networking
     dns = "dnsmasq";
   };
 
