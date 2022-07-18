@@ -26,6 +26,7 @@ in
 
         wally-cli
         smbclient
+        macchanger
 
         cachix
         rnix-lsp
