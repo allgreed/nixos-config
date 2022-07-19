@@ -15,6 +15,7 @@ in
     ./networking.nix
     ./gui.nix
     ./borg.nix
+    ./utilities.nix
     # TODO: guard this o.0?
     ./cachix.nix
     ]
