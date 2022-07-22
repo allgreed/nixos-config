@@ -3,3 +3,5 @@
 
 # TODO: partition it
 # TODO: setup a single vdev pool with that drive and call it tank
+# if ssd:
+zpool set autotrim=on tank
