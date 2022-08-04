@@ -12,8 +12,10 @@
     # snas
     f5_6 # round edges futuristic
     jost # just nice
+
     # TODO: fix terminal fonts so that lsd can be used
-    # how about nerdfont?
+    # note: nerfdfonts don't help here
+    # (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
   ];
 
   services.xserver = {
