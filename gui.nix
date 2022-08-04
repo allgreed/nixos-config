@@ -5,11 +5,13 @@
   fonts.fonts = with pkgs; [
     source-code-pro
     font-awesome-ttf
-    crimson
-    f5_6
-    ferrum
-    jost
-    junicode
+    # serif
+    crimson # just nice
+    ferrum  # more like fantasy or fancy wild west
+    junicode # medival
+    # snas
+    f5_6 # round edges futuristic
+    jost # just nice
     # TODO: fix terminal fonts so that lsd can be used
     # how about nerdfont?
   ];
