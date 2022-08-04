@@ -15,13 +15,14 @@ in
     # TODO: split this
     environment.systemPackages = with pkgs; [
         python27
-        (python38.withPackages(ps: with ps; [ 
+        (python39.withPackages(ps: with ps; [ 
           click
           ptpython 
           requests
           i3ipc
           tasklib
           subliminal
+          python-pushover
         ]))
 
         wally-cli
