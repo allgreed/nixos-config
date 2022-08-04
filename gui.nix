@@ -5,7 +5,13 @@
   fonts.fonts = with pkgs; [
     source-code-pro
     font-awesome-ttf
+    crimson
+    f5_6
+    ferrum
+    jost
+    junicode
     # TODO: fix terminal fonts so that lsd can be used
+    # how about nerdfont?
   ];
 
   services.xserver = {
