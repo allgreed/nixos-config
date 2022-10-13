@@ -93,6 +93,7 @@ in
 
         gimp
         openscad
+        freemind
 
         arandr
         powertop
