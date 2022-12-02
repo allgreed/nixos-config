@@ -21,6 +21,9 @@ in
           requests
           i3ipc
           tasklib
+          typer
+
+          # those are actual packages
           subliminal
           python-pushover
         ]))
