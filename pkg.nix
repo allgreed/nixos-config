@@ -3,10 +3,15 @@ let
   nixpkgs = builtins.fetchGit {
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
-    rev = "f2537a505d45c31fe5d9c27ea9829b6f4c4e6ac5"; # 27-06-2022
+    rev = "3fb8eedc450286d5092e4953118212fa21091b3b"; # 12-04-2022
     # obtain via `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
   };
-  unstablePkgs = import nixpkgs { config = {}; };
+  # TODO: see if this is necessary after channel bump
+  unstablePkgs = import nixpkgs { config = {
+    allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+      "rambox"
+    ];
+  }; };
 in
 {
   nixpkgs.overlays = [
@@ -78,8 +83,6 @@ in
         unstablePkgs.neovim
         entr
         tmate
-
-        spotify
 
         tree
 
