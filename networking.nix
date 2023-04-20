@@ -32,8 +32,7 @@
     resolveLocalQueries = true;
   };
 
-  # apparently stock Spotify client needs this :c
-  networking.firewall.allowedTCPPorts = [ 57621 ];
+  #networking.firewall.allowedTCPPorts = [ ];
   # TODO: what are the samba ports? how to enable them temporarly?
   #networking.firewall.enable = false;
 
