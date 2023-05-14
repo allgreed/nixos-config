@@ -2,7 +2,7 @@
 {
   networking.networkmanager = {
     enable = true;
-    # comment the line below to enable some of the captie portal-based networking
+    # comment the line below to enable some of the captive portal-based networking
     dns = "dnsmasq";
   };
 
@@ -12,7 +12,6 @@
     servers = [
       "/lan/192.168.69.1"
       # TODO: inform me if the query had to be resolved by backup and actually enable backup
-      "195.10.195.195"
       "194.36.144.87"
       "91.217.137.37"
       "94.247.43.254"
