@@ -13,6 +13,17 @@ let
       "rambox"
     ];
   }; };
+  # TODO: how to make sure this matches the python that's used in packages lower?
+  subtitle-filter = with pkgs.python39Packages; buildPythonPackage rec {
+    pname = "subtitle-filter";
+    version = "1.4.6";
+
+    src = fetchPypi{
+      inherit version;
+      inherit pname;
+      sha256 = "02pkg3fbhd6xh4y1dbgyjps3chz6z3cnyf148l0xwa0g4nwdknl1";
+    };
+  };
 in
 {
   nixpkgs.overlays = [
@@ -28,7 +39,8 @@ in
           tasklib
           typer
 
-          # those are actual packages
+          # those are actual packages as opposed to dependant libs
+          subtitle-filter
           subliminal
           python-pushover
         ]))
