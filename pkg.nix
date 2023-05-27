@@ -146,5 +146,7 @@ in
         # wakeonlan
 
         gramps
+
+        ffmpeg
     ];
 }
