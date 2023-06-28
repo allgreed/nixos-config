@@ -8,7 +8,7 @@ zfs create -o mountpoint=legacy tank/local/user-cache
 
 zfs create -o mountpoint=none -o com.sun:auto-snapshot=true tank/data
 zfs create -o mountpoint=legacy tank/data/home
-zfs create -o mountpoint=legacy -o xattr=sa -o acltype=posixacl tank/data/root
+zfs create -o mountpoint=legacy -o com.sun:auto-snapshot:weekly=false  -o xattr=sa -o acltype=posixacl tank/data/root
 
 mount -t zfs tank/data/root /mnt
 
