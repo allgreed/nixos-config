@@ -164,10 +164,17 @@ in
       ];
     };
   };
+  # TODO: hmmm? how usefulll is this?
   programs.gnupg.agent = {
     enable = true;
     pinentryFlavor = "curses";
   };
+
+  # otherwise the logs will just pile up...
+  services.journald.extraConfig = ''
+    # 30 days on Sarah in 2023 was ~500M, double that should be plenty
+    SystemMaxUse=1G
+  '';
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
