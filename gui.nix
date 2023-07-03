@@ -27,6 +27,8 @@
       defaultSession = "none+i3";
     };
 
+    libinput.enable = true;
+
     layout = "pl";
     xkbOptions = "caps:ctrl_modifier";
 
