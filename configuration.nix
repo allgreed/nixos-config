@@ -136,7 +136,6 @@ in
         extraGroups = [
           "wheel"
           "networkmanager"
-          "docker"
           "audio"
           "lpadmin"
           "video"
