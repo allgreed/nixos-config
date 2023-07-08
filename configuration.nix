@@ -49,6 +49,10 @@ in
       package = pkgs.pulseaudioFull;
       extraConfig = "unload-module module-role-cork"; # prevents Teams/whatnot from muting other streams
   };
+
+  # udev rules for flashing / live-training
+  hardware.keyboard.zsa.enable = true;
+
   services.spotifyd.enable = true;
 
   services.tzupdate.enable = true;
