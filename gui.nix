@@ -27,6 +27,8 @@
       defaultSession = "none+i3";
     };
 
+    # should make the touchpad work, but it doesn't
+    # but maybe that's a HW issue on Sarah, dunno lol
     libinput.enable = true;
 
     layout = "pl";
