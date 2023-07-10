@@ -136,6 +136,7 @@ in
         deluge
 
         taskwarrior
+        tasksh
 
         jq # manipulate JSON
 
