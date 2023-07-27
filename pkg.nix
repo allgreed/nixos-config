@@ -64,7 +64,7 @@ in
 
         pv
         ntfs3g
-        hledger
+        unstablePkgs.hledger
         hledger-iadd
 
         google-chrome
