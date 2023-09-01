@@ -11,6 +11,7 @@ zfs create -o mountpoint=legacy tank/data/home
 zfs create -o mountpoint=legacy -o com.sun:auto-snapshot:weekly=false  -o xattr=sa -o acltype=posixacl tank/data/root
 
 # TODO: https://grahamc.com/blog/erase-your-darlings/
+# also: TODO: https://nixos.wiki/wiki/Impermanence
 
 mount -t zfs tank/data/root /mnt
 
