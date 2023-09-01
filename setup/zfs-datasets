@@ -10,6 +10,8 @@ zfs create -o mountpoint=none -o com.sun:auto-snapshot=true tank/data
 zfs create -o mountpoint=legacy tank/data/home
 zfs create -o mountpoint=legacy -o com.sun:auto-snapshot:weekly=false  -o xattr=sa -o acltype=posixacl tank/data/root
 
+# TODO: https://grahamc.com/blog/erase-your-darlings/
+
 mount -t zfs tank/data/root /mnt
 
 mkdir /mnt/home
