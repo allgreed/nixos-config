@@ -3,8 +3,8 @@ let
   nixpkgs = builtins.fetchGit {
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
-    #rev = "3fb8eedc450286d5092e4953118212fa21091b3b"; # 12-04-2023
-    rev = "f2537a505d45c31fe5d9c27ea9829b6f4c4e6ac5"; # 27-06-2022
+    #rev = "f2537a505d45c31fe5d9c27ea9829b6f4c4e6ac5"; # 27-06-2022 <- this works
+    rev = "81e8f48ebdecf07aab321182011b067aafc78896"; # 6-10-2023
     # obtain via `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
   };
   # TODO: see if this is necessary after channel bump
@@ -23,6 +23,17 @@ let
       inherit pname;
       sha256 = "02pkg3fbhd6xh4y1dbgyjps3chz6z3cnyf148l0xwa0g4nwdknl1";
     };
+  };
+  # TODO: actually use latest Rambox or switch to something else
+  ramboxPkgs = import (builtins.fetchGit {
+      url = "https://github.com/nixos/nixpkgs/";
+      ref = "refs/heads/nixos-unstable";
+      rev = "f2537a505d45c31fe5d9c27ea9829b6f4c4e6ac5"; # 27-06-2022 <- this works
+    }) { config = {
+      allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+        "rambox"
+      ];
+    }; 
   };
 in
 {
@@ -125,7 +136,7 @@ in
         mkpasswd
         lastpass-cli
 
-        unstablePkgs.rambox
+        ramboxPkgs.rambox
         ferdi
 
         gnumake # build / script automation
