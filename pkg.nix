@@ -19,7 +19,7 @@ let
     version = "1.4.7";
     src = builtins.fetchGit {
       url = "https://github.com/allgreed/filter-subs/";
-      rev = "9ff0efd9299b714381baba1689f0d0db643c7955";
+      rev = "5180856aa2f2cc3cfa5f5574592b59055022cf8d";
     };
   };
   # TODO: actually use latest Rambox or switch to something else
