@@ -16,12 +16,10 @@ let
   # TODO: how to make sure this matches the python that's used in packages lower?
   subtitle-filter = with pkgs.python39Packages; buildPythonPackage rec {
     pname = "subtitle-filter";
-    version = "1.4.6";
-
-    src = fetchPypi{
-      inherit version;
-      inherit pname;
-      sha256 = "02pkg3fbhd6xh4y1dbgyjps3chz6z3cnyf148l0xwa0g4nwdknl1";
+    version = "1.4.7";
+    src = builtins.fetchGit {
+      url = "https://github.com/allgreed/filter-subs/";
+      rev = "9ff0efd9299b714381baba1689f0d0db643c7955";
     };
   };
   # TODO: actually use latest Rambox or switch to something else
