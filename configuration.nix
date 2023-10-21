@@ -53,6 +53,12 @@ in
   # udev rules for flashing / live-training
   hardware.keyboard.zsa.enable = true;
 
+  # TODO: I don't think this works really :c
+  services.logind.extraConfig = ''
+    # don’t shutdown when power button is short-pressed
+    HandlePowerKey=ignore
+  '';
+
   services.spotifyd.enable = true;
 
   services.tzupdate.enable = true;
