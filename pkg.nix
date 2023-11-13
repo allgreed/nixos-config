@@ -1,18 +1,14 @@
 { config, pkgs, callPackage, ... }: 
 let
+  # TODO: see if this is necessary after channel bump
   nixpkgs = builtins.fetchGit {
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
-    #rev = "f2537a505d45c31fe5d9c27ea9829b6f4c4e6ac5"; # 27-06-2022 <- this works
     rev = "81e8f48ebdecf07aab321182011b067aafc78896"; # 6-10-2023
     # obtain via `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
   };
-  # TODO: see if this is necessary after channel bump
-  unstablePkgs = import nixpkgs { config = {
-    allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-      "rambox"
-    ];
-  }; };
+  unstablePkgs = import nixpkgs { config = { }; };
+
   # TODO: how to make sure this matches the python that's used in packages lower?
   subtitle-filter = with pkgs.python39Packages; buildPythonPackage rec {
     pname = "subtitle-filter";
