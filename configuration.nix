@@ -40,6 +40,16 @@ in
     # for usbip
     extraModulePackages = with config.boot.kernelPackages; [ usbip ];
     kernelModules = [ "vhci-hcd" ];
+
+    # TODO: try after upgrading the channel to something latest
+    #binfmt.registrations.appimage = {
+      #wrapInterpreterInShell = false;
+      #interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+      #recognitionType = "magic";
+      #offset = 0;
+      #mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+      #magicOrExtension = ''\x7fELF....AI\x02'';
+    #};
   };
 
   sound.enable = true;
