@@ -173,10 +173,11 @@ in
       ];
     };
   };
+  # TODO: uncomment after bumping the channel globally and remove from pkgs.nix
   # provide the compatiblity layer
-  environment.systemPackages = with pkgs; [
-    doas-sudo-shim
-  ];
+  #environment.systemPackages = with pkgs; [
+    #doas-sudo-shim
+  #];
 
   # TODO: hmmm? how usefulll is this?
   programs.gnupg.agent = {
