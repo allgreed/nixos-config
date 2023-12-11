@@ -169,5 +169,7 @@ in
         gramps
 
         ffmpeg
+
+        autojump
     ];
 }
