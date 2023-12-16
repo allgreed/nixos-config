@@ -16,6 +16,8 @@ in
     ./gui.nix
     ./borg.nix
     ./utilities.nix
+    # TODO: does this warrant own file?
+    ./autojump.nix
     # TODO: guard this o.0?
     ./cachix.nix
     ]
