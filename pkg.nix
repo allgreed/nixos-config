@@ -145,6 +145,7 @@ in
 
         taskwarrior
         tasksh
+        vit
 
         jq # manipulate JSON
 
