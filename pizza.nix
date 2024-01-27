@@ -1,13 +1,17 @@
-{ config, pkgs, callPackage, ... }: 
+{ pkgs }: 
 {
   # because it's non-free, got it? ^^ 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-    "brgenml1lpr"
+  allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+    "rambox"
 
     "google-chrome"
 
-    "zoom-us"
-    "zoom"
-    "faac" # for zoom
+    # my home printer drivers... maybe
+    #"brgenml1lpr"
+
+    # for zoom, although I'm not using Zoom as of lately
+    #"zoom-us"
+    #"zoom"
+    #"faac"
   ];
 }

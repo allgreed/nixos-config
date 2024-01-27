@@ -3,15 +3,11 @@ let
   localConfiguration = if builtins.pathExists ./local.nix
     then [ ./local.nix ]
     else [];
-  nonFreeConfiguration = if builtins.pathExists ./pizza.nix
-    then [ ./pizza.nix ]
-    else [];
 in
 {
   imports = [ 
     ./hardware-configuration.nix
     ./pkg.nix
-    ./pizza.nix
     ./networking.nix
     ./gui.nix
     ./borg.nix
@@ -21,7 +17,6 @@ in
     # TODO: guard this o.0?
     ./cachix.nix
     ]
-    ++ nonFreeConfiguration
     ++ localConfiguration;
 
   virtualisation.docker.enable = true;
