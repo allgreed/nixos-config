@@ -7,7 +7,12 @@ let
     rev = "81e8f48ebdecf07aab321182011b067aafc78896"; # 6-10-2023
     # obtain via `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
   };
-  unstablePkgs = import nixpkgs { config = { }; };
+  # TODO: extract this config into pizza.nix and improt from there
+  unstablePkgs = import nixpkgs { config = {
+    allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+      "google-chrome"
+    ];
+  }; };
 
   # TODO: how to make sure this matches the python that's used in packages lower?
   subtitle-filter = with pkgs.python39Packages; buildPythonPackage rec {
@@ -24,6 +29,7 @@ let
       ref = "refs/heads/nixos-unstable";
       rev = "f2537a505d45c31fe5d9c27ea9829b6f4c4e6ac5"; # 27-06-2022 <- this works
     }) { config = {
+      # TODO: extract this config into pizza.nix and improt from there
       allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
         "rambox"
       ];
@@ -75,7 +81,7 @@ in
         unstablePkgs.hledger
         hledger-iadd
 
-        google-chrome
+        unstablePkgs.google-chrome
 
         htop
         tmux # terminal multiplexer
