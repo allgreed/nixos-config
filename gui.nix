@@ -31,6 +31,19 @@
     # but maybe that's a HW issue on Sarah, dunno lol
     libinput.enable = true;
 
+    # I handle southpaws at the Xmodmap level (so that it's portable and works also on non-Nixos systems)
+    # however some mouses have buttons switched in hardware, so I need to unswitch them to switch them again
+    inputClassSections = [
+    # the 2 and 4-7 don't matter, probably there's a nicer way to express this, but what I want is to swap 1 and 3 and disable 8
+    # 8 is really anoying with this mouse as Firefox interprets it as "history back" and that screws up long forms if pressed accidentally and then you have to fill that fucking form agaINIHATEFILLINGFORMS
+    ''
+      Identifier      "Evoluent Southpaws Vertical Mouse"
+      MatchProduct    "Kingsis Peripherals Evoluent VerticalMouse 4 Left"
+      MatchIsPointer  "on"
+      Option          "ButtonMapping" "3 2 1 4 5 6 7 0"
+    ''
+    ];
+
     layout = "pl";
     xkbOptions = "caps:ctrl_modifier";
 
