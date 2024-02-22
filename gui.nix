@@ -31,6 +31,8 @@
     # but maybe that's a HW issue on Sarah, dunno lol
     libinput.enable = true;
 
+    # TODO: actually do it ^^
+  #builtins.toString (swap24 (swap13 base))
     # I handle southpaws at the Xmodmap level (so that it's portable and works also on non-Nixos systems)
     # however some mouses have buttons switched in hardware, so I need to unswitch them to switch them again
     inputClassSections = [
