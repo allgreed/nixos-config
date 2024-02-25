@@ -1,4 +1,4 @@
-{ config, pkgs, callPackage, ... }: 
+{ config, pkgs, lib, callPackage, ... }: 
 {
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw  ???? --- what does this do?? xD
 
@@ -31,18 +31,32 @@
     # but maybe that's a HW issue on Sarah, dunno lol
     libinput.enable = true;
 
-    # TODO: actually do it ^^
-  #builtins.toString (swap24 (swap13 base))
     # I handle southpaws at the Xmodmap level (so that it's portable and works also on non-Nixos systems)
     # however some mouses have buttons switched in hardware, so I need to unswitch them to switch them again
-    inputClassSections = [
-    # the 2 and 4-7 don't matter, probably there's a nicer way to express this, but what I want is to swap 1 and 3 and disable 8
-    # 8 is really anoying with this mouse as Firefox interprets it as "history back" and that screws up long forms if pressed accidentally and then you have to fill that fucking form agaINIHATEFILLINGFORMS
+    inputClassSections = 
+    let
+      # TODO: refactor!
+      range = lib.lists.range;
+      imap1 = lib.lists.imap1;
+      pipe = lib.trivial.pipe;
+      at1 = l: i: builtins.elemAt l (i - 1); # complements imap1
+      baseButtonMapping = range 1 8; # so 1=1, 2=2, etc.
+      disableButton = button: mapping: imap1(i: v: if i == button then 0 else v) mapping;
+      swapButtons = a: b: mapping: imap1(i: v: if i == a || i == b then (if i == a then at1 mapping b else at1 mapping a) else v) mapping;
+      theButtonMapping = pipe baseButtonMapping [
+        # the southpaws reswap
+        (swapButtons 1 3)
+        # 8 is really anoying with this mouse as Firefox interprets it as "history back" and that screws up long forms if pressed accidentally and then you have to fill that fucking form agaINIHATEFILLINGFORMS
+        (disableButton 8)
+        toString
+      ];
+    in
+    [
     ''
       Identifier      "Evoluent Southpaws Vertical Mouse"
       MatchProduct    "Kingsis Peripherals Evoluent VerticalMouse 4 Left"
       MatchIsPointer  "on"
-      Option          "ButtonMapping" "3 2 1 4 5 6 7 0"
+      Option          "ButtonMapping" ${theButtonMapping}
     ''
     ];
 
