@@ -212,6 +212,7 @@ in
     # 30 days on Sarah in 2023 was ~500M, double that should be plenty
     SystemMaxUse=1G
   '';
+  # TODO: does the above account for a broken service just spamming logs? Can I throttle just that?
 
   # uncomment to cache all dependencies locally (might download crapload of stuff)
   #system.includeBuildDependencies = true;
