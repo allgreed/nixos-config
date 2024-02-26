@@ -46,7 +46,7 @@
       theButtonMapping = pipe baseButtonMapping [
         # the southpaws reswap
         (swapButtons 1 3)
-        # 8 is really anoying with this mouse as Firefox interprets it as "history back" and that screws up long forms if pressed accidentally and then you have to fill that fucking form agaINIHATEFILLINGFORMS
+        # 8 is really anoying with this mouse (upper side button) as Firefox interprets it as "history back" and that screws up long forms if pressed accidentally and then you have to fill that fucking form agaINIHATEFILLINGFORMS
         (disableButton 8)
         toString
       ];
