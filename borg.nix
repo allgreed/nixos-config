@@ -88,6 +88,7 @@ in
       '';
     };
   };
+  # TODO: why this is even needed? o.0
   environment.etc."borgjobs/home/borgignore" = {
     # TODO: that's actually exclude from above (the second arg)
     text = builtins.concatStringsSep "\n" (excludesWithPath "/home/allgreed" homeExcludes);
