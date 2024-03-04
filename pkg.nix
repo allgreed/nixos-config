@@ -21,7 +21,7 @@ let
   unstablePkgs = import (builtins.fetchGit {
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
-    rev = "81e8f48ebdecf07aab321182011b067aafc78896"; # 6-10-2023
+    rev = "b8697e57f10292a6165a20f03d2f42920dfaf973"; # 4-03-2024
     # obtain via `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
   # TODO: do I have to pass pkgs here?
   # TODO: if "no" <- adjust all call sites
