@@ -217,6 +217,12 @@ in
   # uncomment to cache all dependencies locally (might download crapload of stuff)
   #system.includeBuildDependencies = true;
 
+  #programs.nix-ld.enable = true;
+  #programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+  #];
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
