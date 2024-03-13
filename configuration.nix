@@ -217,6 +217,7 @@ in
   # uncomment to cache all dependencies locally (might download crapload of stuff)
   #system.includeBuildDependencies = true;
 
+  # TODO: https://github.com/wimpysworld/nix-config/commit/5ea9bba6e5d2f3fd4f99311a23a165e7253c0128
   #programs.nix-ld.enable = true;
   #programs.nix-ld.libraries = with pkgs; [
     # Add any missing dynamic libraries for unpackaged programs
