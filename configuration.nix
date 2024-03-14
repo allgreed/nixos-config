@@ -182,7 +182,8 @@ in
   services.trezord.enable = true;
 
   security = {
-    sudo.enable = false;
+    # TODO: describe the lore
+    sudo.enable = true;
     doas = {
       enable = true;
       extraRules = [

@@ -52,7 +52,11 @@ in
       "nix-2.15.3"
     ];
   } // unfreeConfig;
-  nixpkgs.overlays = [ ];
+  nixpkgs.overlays = [
+    (final: prev: {
+       grub2 = (import ./misc/specific-version.nix {}).grub2."2.06";
+    })
+  ];
 
     # TODO: split this
   environment.systemPackages = with pkgs; [

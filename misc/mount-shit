@@ -1,0 +1,2 @@
+mount -t zfs rpool/local/nix /mnt/nix
+mount -t zfs rpool/data/home /mnt/home
