@@ -46,28 +46,38 @@ let
 in
 {
   # TODO: ok, but how to export this to a seperate file -> see pizza.nix
-  nixpkgs.config = {} // unfreeConfig;
+  nixpkgs.config = {
+    # TODO: get rid of this - figure out how to update to the latest stable or whatever !!!
+    permittedInsecurePackages = [
+      "nix-2.15.3"
+    ];
+  } // unfreeConfig;
   nixpkgs.overlays = [ ];
 
     # TODO: split this
   environment.systemPackages = with pkgs; [
-      python27
-      (python39.withPackages(ps: with ps; [ 
-        click
-        ptpython 
-        requests
-        i3ipc
-        tasklib
-        typer
+      #python27
+      # TODO: just drop it?
+      #(python39.withPackages(ps: with ps; [ 
+        #click
+        #ptpython 
+        #requests
+        #i3ipc
+        #tasklib
+        #typer
 
-        # those are actual packages as opposed to dependant libs
-        subtitle-filter
-        subliminal
-        python-pushover
-      ]))
+        #subtitle-filter
+        ## those are actual packages as opposed to dependant libs
+        ##subliminal
+        ## TODO: fix this, probably just by bumping python version globally
+        ## or just move to proper nixpkgs, instead of globally installed python - will this work? o.0
+        ##python-pushover
+        ## TODO: sad frog -> fix this!
+      #]))
 
       wally-cli
-      smbclient
+      #smbclient
+      # TODO: FIX IT!
       macchanger
 
       cachix
@@ -89,7 +99,8 @@ in
       pv
       ntfs3g
       unstablePkgs.hledger
-      hledger-iadd
+      #hledger-iadd
+      # TODO: fix broken!
 
       unstablePkgs.google-chrome
 
@@ -100,7 +111,8 @@ in
       minicom
 
       bc
-      manpages
+      #manpages
+      # TODO: fix it!!!
 
       dotfiles
 
@@ -150,7 +162,6 @@ in
       lastpass-cli
 
       ramboxPkgs.rambox
-      ferdi
 
       gnumake # build / script automation
       expect # interactive script automation utility
@@ -170,7 +181,8 @@ in
       dnsutils
       wavemon
       sshfs
-      dhcp
+      #dhcp
+      # TODO: fix this!
       iftop
       traceroute
       nettools
