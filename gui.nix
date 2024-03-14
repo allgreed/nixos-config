@@ -56,7 +56,7 @@
       Identifier      "Evoluent Southpaws Vertical Mouse"
       MatchProduct    "Kingsis Peripherals Evoluent VerticalMouse 4 Left"
       MatchIsPointer  "on"
-      Option          "ButtonMapping" ${theButtonMapping}
+      Option          "ButtonMapping" "${theButtonMapping}"
     ''
     ];
 
