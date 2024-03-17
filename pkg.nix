@@ -47,7 +47,7 @@ in
 {
   # TODO: ok, but how to export this to a seperate file -> see pizza.nix
   nixpkgs.config = {
-    # TODO: get rid of this - figure out how to update to the latest stable or whatever !!!
+    # FIXME: get rid of this - figure out how to update to the latest stable or whatever !!!
     permittedInsecurePackages = [
       "nix-2.15.3"
     ];
@@ -55,32 +55,39 @@ in
   nixpkgs.overlays = [
     # https://github.com/NixOS/nixpkgs/issues/293038
     (final: prev: {
+      # TODO: actually get this grub from a channel or something
        grub2 = (import ./misc/specific-version.nix {}).grub2."2.06";
     })
   ];
 
-    # TODO: split this
   environment.systemPackages = with pkgs; [
-      #(python39.withPackages(ps: with ps; [ 
-        #click
-        #ptpython 
-        #requests
-        #i3ipc
-        #tasklib
-        #typer
+      # FIXME: make python work
+      # TODO: make it 312
+      (python311.withPackages(ps: with ps; [ 
+        ptpython  # my repl shell
 
+        # I sometimes like to prototype and just want this to be there
+        requests
+        tasklib
+
+        # global dependencies, shouldn't be here really...
+        click
+        i3ipc
+        typer
+
+        # those are "end-user" level actual packages
+        # TODO: get rid of them?
         #subtitle-filter
-        ## those are actual packages as opposed to dependant libs
-        ##subliminal
-        ## TODO: fix this, probably just by bumping python version globally
-        ## or just move to proper nixpkgs, instead of globally installed python - will this work? o.0
-        ##python-pushover
-        ## TODO: sad frog -> fix this!
-      #]))
+        #subliminal
+        # FIXME: fix this, probably just by bumping python version globally
+        # or just move to proper nixpkgs, instead of globally installed python - will this work? o.0
+        #python-pushover
+        # FIXME: sad frog -> fix this!
+      ]))
 
       wally-cli
       #smbclient
-      # TODO: FIX IT!
+      # FIXME: FIX IT!
       macchanger
 
       cachix
@@ -103,7 +110,7 @@ in
       ntfs3g
       unstablePkgs.hledger
       #hledger-iadd
-      # TODO: fix broken!
+      # FIXME: fix broken!
 
       unstablePkgs.google-chrome
 
@@ -115,7 +122,7 @@ in
 
       bc
       #manpages
-      # TODO: fix it!!!
+      # FIXME: fix it!!!
 
       dotfiles
 
@@ -185,7 +192,7 @@ in
       wavemon
       sshfs
       #dhcp
-      # TODO: fix this!
+      # FIXME: fix this!
       iftop
       traceroute
       nettools
@@ -195,6 +202,7 @@ in
       whois
       arp-scan
       # wakeonlan
+      # TODO: why is this commented out? o.0
 
       gramps
 

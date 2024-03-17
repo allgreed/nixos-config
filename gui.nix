@@ -5,7 +5,7 @@
   fonts.packages = with pkgs; [
     source-code-pro
     #font-awesome-ttf
-    # TODO: how is it called now? ^
+    # FIXME: how is it called now? ^
     # serif
     crimson # just nice
     ferrum  # more like fantasy or fancy wild west
@@ -73,7 +73,8 @@
       extraPackages = with pkgs; [
         feh
         dmenu
-        # TODO: fix the patches!
+        # FIXME: fix the patches!
+        # TODO: also apply the same patches to the nm-util, can I just override? :D
         #(dmenu.overrideAttrs (oldAttrs: rec {
           #patches = [
             #(fetchpatch {
@@ -112,20 +113,21 @@
         scrot # for locking, because escrotum is too slow :c
         conky
         numlockx
-        #workrave
-        #TODO: fix this!!!
         redshift
         unclutter
         screenkey # displays pressed keys, cool for presentations
         rxvt_unicode
         pasystray
         parcellite
+        #workrave
+        #FIXME: fix this!!!
         ];
       };
   };
 
   # fix for Workrave not persisting settings
-  # TODO: FIX THIS HOW IS IT CALLED NOW?
+  # FIXME: FIX THIS HOW IS IT CALLED NOW?
+  # TODO: should this be together in a module maybe?
   #services.dbus.packages = with pkgs; [ gnome3.dconf ];
 }
 

@@ -181,7 +181,7 @@ in
   services.trezord.enable = true;
 
   security = {
-    # TODO: describe the lore
+    # FIXME: describe the lore
     sudo.enable = true;
     doas = {
       enable = true;
