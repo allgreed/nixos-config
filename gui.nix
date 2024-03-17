@@ -4,13 +4,12 @@
 
   fonts.packages = with pkgs; [
     source-code-pro
-    #font-awesome-ttf
-    # FIXME: how is it called now? ^
-    # serif
+    font-awesome
+    ### serif
     crimson # just nice
     ferrum  # more like fantasy or fancy wild west
     junicode # medival
-    # snas
+    ### snas
     f5_6 # round edges futuristic
     jost # just nice
 
