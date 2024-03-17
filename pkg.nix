@@ -16,17 +16,6 @@ let
       #"faac"
     ];
   };
-
-  # TODO: see if this is necessary after channel bump
-  unstablePkgs = import (builtins.fetchGit {
-    url = "https://github.com/nixos/nixpkgs/";
-    ref = "refs/heads/nixos-unstable";
-    rev = "b8697e57f10292a6165a20f03d2f42920dfaf973"; # 4-03-2024
-    # obtain via `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
-  # TODO: do I have to pass pkgs here?
-  # TODO: if "no" <- adjust all call sites
-  }) { config = {} // (unfreeConfig); };
-
   # TODO: how to make sure this matches the python that's used in packages lower?
   subtitle-filter = with pkgs.python39Packages; buildPythonPackage rec {
     pname = "subtitle-filter";
@@ -104,15 +93,15 @@ in
       sox
       linuxPackages.usbip
 
-      unstablePkgs.yt-dlp
+      yt-dlp
 
       pv
       ntfs3g
-      unstablePkgs.hledger
+      hledger
       ramboxPkgs.hledger-iadd
       # TODO: actually drop the ramboxPkgs, however there was a broken package, I'm like 3 minor behind
 
-      unstablePkgs.google-chrome
+      google-chrome
 
       htop
       tmux # terminal multiplexer
@@ -138,8 +127,7 @@ in
       direnv
       nix-direnv
       vimHugeX
-      # TODO: get it back to stable one the version catches up
-      unstablePkgs.neovim
+      neovim
       entr
       tmate
 
