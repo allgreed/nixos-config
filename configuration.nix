@@ -181,7 +181,9 @@ in
   services.trezord.enable = true;
 
   security = {
-    # FIXME: describe the lore
+    # TODO: make it a moduel -> doas-not-sudo
+    # https://github.com/NixOS/nixpkgs/pull/289680
+    # FIXME: actually try to get rid of the sudo
     sudo.enable = true;
     doas = {
       enable = true;

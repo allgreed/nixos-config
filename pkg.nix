@@ -105,7 +105,6 @@ in
       linuxPackages.usbip
 
       unstablePkgs.yt-dlp
-      unstablePkgs.doas-sudo-shim
 
       pv
       ntfs3g
