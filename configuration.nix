@@ -37,9 +37,8 @@ in
   virtualisation.oci-containers.backend = "podman";
 
   boot = {
-    tmpOnTmpfs = true;
+    tmp.useTmpfs = true;
     loader.grub.enable = true;
-    loader.grub.version = 2;
 
     loader.grub.zfsSupport = true;
     # TODO: how much of this is redundant with zfsSupport to true?
