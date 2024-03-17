@@ -11,7 +11,7 @@
     # TODO: make it werk
     #enable = true;
 
-    servers = [
+    settings.servers = [
       "/lan/192.168.69.1"
       # TODO: inform me if the query had to be resolved by backup and actually enable backup
       #"194.36.144.87"

@@ -227,5 +227,5 @@ in
   #];
 
   # Kto ma wiedzieć, ten wie
-  system.stateVersion = "19.03";
+  system.stateVersion = "22.05";
 }
