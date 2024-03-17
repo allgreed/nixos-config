@@ -61,8 +61,6 @@ in
 
     # TODO: split this
   environment.systemPackages = with pkgs; [
-      #python27
-      # TODO: just drop it?
       #(python39.withPackages(ps: with ps; [ 
         #click
         #ptpython 
