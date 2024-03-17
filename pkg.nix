@@ -38,6 +38,7 @@ let
   };
 
   # TODO: actually use latest Rambox or switch to something else
+  # TODO: SEE USAGES VERY CAREFULLY!
   ramboxPkgs = import (builtins.fetchGit {
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
@@ -61,8 +62,6 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-      # FIXME: make python work
-      # TODO: make it 312
       (python311.withPackages(ps: with ps; [ 
         ptpython  # my repl shell
 
@@ -77,12 +76,14 @@ in
 
         # those are "end-user" level actual packages
         # TODO: get rid of them?
-        #subtitle-filter
+        subtitle-filter
+        # TODO: put this under nixpkgs?
         #subliminal
-        # FIXME: fix this, probably just by bumping python version globally
-        # or just move to proper nixpkgs, instead of globally installed python - will this work? o.0
-        #python-pushover
-        # FIXME: sad frog -> fix this!
+        # FIXME: broken package
+
+        pushover-complete
+        # FIXME: make pushover-shim - so that I can do pushover "string" and have it done
+        # TODO: package it together as a program and get rid of this uglyness
       ]))
 
       wally-cli
@@ -109,8 +110,8 @@ in
       pv
       ntfs3g
       unstablePkgs.hledger
-      #hledger-iadd
-      # FIXME: fix broken!
+      ramboxPkgs.hledger-iadd
+      # TODO: actually drop the ramboxPkgs, however there was a broken package, I'm like 3 minor behind
 
       unstablePkgs.google-chrome
 
