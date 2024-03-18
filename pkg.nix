@@ -17,7 +17,7 @@ let
     ];
   };
   # TODO: how to make sure this matches the python that's used in packages lower?
-  subtitle-filter = with pkgs.python39Packages; buildPythonPackage rec {
+  subtitle-filter = with pkgs.python39Packages; buildPythonPackage {
     pname = "subtitle-filter";
     version = "1.4.7";
     src = builtins.fetchGit {
@@ -46,7 +46,7 @@ in
        grub2 = (import ./misc/specific-version.nix {}).grub2."2.06";
     })
     (final: prev: {
-        dmenu = prev.dmenu.overrideAttrs (oldAttrs: rec {
+        dmenu = prev.dmenu.overrideAttrs (oldAttrs: {
           patches = [
             # FIXME: fix this patch!
             # /nix/store/gaj6knm0vclpzw9f2d2f9zbswrjbwjd3-dmenu-5.2.drv
