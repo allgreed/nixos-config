@@ -105,6 +105,7 @@
   };
 
   # fix for Workrave not persisting settings
+  # TODO: actually - is this still relevant?
   programs.dconf.enable = true;
 }
 

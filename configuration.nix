@@ -184,27 +184,26 @@ in
   services.trezord.enable = true;
 
   security = {
-    # TODO: make it a moduel -> doas-not-sudo
-    # https://github.com/NixOS/nixpkgs/pull/289680
-    # FIXME: actually try to get rid of the sudo
-    sudo.enable = true;
+    sudo.enable = false;  # yes, it's a statement
     doas = {
       enable = true;
       extraRules = [
         {
           users = [ "allgreed" ];
+          # TODO: is this *really* what I want?
           persist = true;
           keepEnv = true;
+          # TODO: this is probably casuing ugly warnings on rebuild
           setEnv = [ "HOME=/home/allgreed" ];
         }
       ];
     };
   };
-  # TODO: uncomment after bumping the channel globally and remove from pkgs.nix
-  # provide the compatiblity layer
-  #environment.systemPackages = with pkgs; [
-    #doas-sudo-shim
-  #];
+  # might still be required for some stuff
+  # https://github.com/NixOS/nixpkgs/pull/289680
+  environment.systemPackages = with pkgs; [
+    doas-sudo-shim
+  ];
 
   # TODO: hmmm? how usefulll is this?
   programs.gnupg.agent = {
