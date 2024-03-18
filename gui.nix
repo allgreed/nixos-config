@@ -99,15 +99,12 @@
         rxvt_unicode
         pasystray
         parcellite
-        #workrave
-        #FIXME: fix this!!!
+        workrave
         ];
       };
   };
 
   # fix for Workrave not persisting settings
-  # FIXME: FIX THIS HOW IS IT CALLED NOW?
-  # TODO: should this be together in a module maybe?
-  #services.dbus.packages = with pkgs; [ gnome3.dconf ];
+  programs.dconf.enable = true;
 }
 

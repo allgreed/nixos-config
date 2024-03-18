@@ -203,8 +203,9 @@ in
       dnsutils
       wavemon
       sshfs
-      #dhcp
-      # FIXME: fix this!
+      # here was 'dhcp' - https://github.com/NixOS/nixpkgs/issues/215571
+      # TODO: learn enough networking fu to fix issues without dhclient restart xD
+      # TODO: remove 'dhcprc'
       iftop
       traceroute
       nettools
