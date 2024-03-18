@@ -71,29 +71,10 @@
       enable = true;
       extraPackages = with pkgs; [
         feh
-        dmenu
-        # FIXME: fix the patches!
-        # TODO: also apply the same patches to the nm-util, can I just override? :D
-        #(dmenu.overrideAttrs (oldAttrs: rec {
-          #patches = [
-            #(fetchpatch {
-              #url = "https://tools.suckless.org/dmenu/patches/solarized/dmenu-solarized-light-5.0.diff";
-              #sha256 = "0dwzf8aj8lvfqggb1lb1ds0r021dppxayg9gkrvr3004pgc0zwnq";
-            #})
-            #(fetchpatch {
-              #url = "https://tools.suckless.org/dmenu/patches/xresources/dmenu-xresources-4.9.diff";
-              #sha256 = "0clczp17zwkxy1qhy0inqjplxpq4mgaf4vvfvn063hk733r4i7rn";
-            #})
-            #(fetchpatch {
-              #url = "https://tools.suckless.org/dmenu/patches/line-height/dmenu-lineheight-5.0.diff";
-              #sha256 = "16aqbyp3mg2cgnm8dysbdgcdhh3r6k2fsw1cxzrkka22hvi73paa";
-            #})
-            #(fetchpatch {
-              #url = "https://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-4.9.diff";
-              #sha256 = "000fkg4dcr2vrpd442f2v6ycmmxdml781ziblzx5rxvvyclsryfd";
-            #})
-          #];
-        #}))
+        # TODO: does this look like fun? 
+        # https://github.com/Shizcow/dmenu-rs
+        dmenu  # note: this is patched in an overlay
+        # TODO: move this overlay here?
         i3lock-color
         i3blocks
         networkmanager_dmenu

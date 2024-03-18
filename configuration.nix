@@ -146,11 +146,14 @@ in
     "/share/nix-direnv"
   ];
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-    persistent = true;
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+      persistent = true;
+    };
+    settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
   # TODO: override nixos-help setting and don't display the help message, but keep everything else

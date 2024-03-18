@@ -48,6 +48,30 @@ in
       # TODO: actually get this grub from a channel or something
        grub2 = (import ./misc/specific-version.nix {}).grub2."2.06";
     })
+    (final: prev: {
+        dmenu = prev.dmenu.overrideAttrs (oldAttrs: rec {
+          patches = [
+            # FIXME: fix this patch!
+            # /nix/store/gaj6knm0vclpzw9f2d2f9zbswrjbwjd3-dmenu-5.2.drv
+            #(prev.fetchpatch {
+              #url = "https://tools.suckless.org/dmenu/patches/line-height/dmenu-lineheight-5.0.diff";
+              #hash = "sha256-St1x4oZCqDnz7yxw7cQ0eUDY2GtL+4aqfUy8Oq5fWJk=";
+            #})
+            (prev.fetchpatch {
+              url = "https://tools.suckless.org/dmenu/patches/solarized/dmenu-solarized-light-5.0.diff";
+              hash = "sha256-2PIP2LsEgJF3ni89r/q9LQiQgW5h0bDew25TJBVynzc=";
+            })
+            (prev.fetchpatch {
+              url = "https://tools.suckless.org/dmenu/patches/xresources/dmenu-xresources-4.9.diff";
+              hash = "sha256-Np9I8hhnwmGA3W5v4tSrBN9Or8Q2Ag9x8H3yf8L9jDI=";
+            })
+            (prev.fetchpatch {
+              url = "https://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-4.9.diff";
+              hash = "sha256-zfmsKfN791z6pyv+gA6trdfKvNnCCULazVtk1sibDgA=";
+            })
+          ];
+        });
+    })
   ];
 
   environment.systemPackages = with pkgs; [
