@@ -37,11 +37,8 @@ in
 {
   # TODO: ok, but how to export this to a seperate file -> see pizza.nix
   nixpkgs.config = {
-    # FIXME: get rid of this - figure out how to update to the latest stable or whatever !!!
-    permittedInsecurePackages = [
-      "nix-2.15.3"
-    ];
   } // unfreeConfig;
+
   nixpkgs.overlays = [
     # https://github.com/NixOS/nixpkgs/issues/293038
     (final: prev: {
@@ -105,7 +102,8 @@ in
       macchanger
 
       cachix
-      rnix-lsp
+      nil
+
       bat
       tealdeer
 

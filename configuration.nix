@@ -200,7 +200,10 @@ in
     };
   };
   # might still be required for some stuff
+  # TOOD: the invocation I really want
+  # doas nixos-rebuild build && doas ./result/bin/switch-to-configuration switch
   # https://github.com/NixOS/nixpkgs/pull/289680
+  # TODO: how to update to this patch?
   environment.systemPackages = with pkgs; [
     doas-sudo-shim
   ];
