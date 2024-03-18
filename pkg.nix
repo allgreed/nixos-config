@@ -90,7 +90,7 @@ in
         # those are "end-user" level actual packages
         # TODO: get rid of them?
         subtitle-filter
-        # TODO: put this under nixpkgs?
+        # FIXME: put this under nixpkgs?
         #subliminal
         # FIXME: broken package
 
@@ -101,7 +101,7 @@ in
 
       wally-cli
       #smbclient
-      # FIXME: FIX IT!
+      # TODO: FIX IT!
       macchanger
 
       cachix
@@ -134,8 +134,8 @@ in
       minicom
 
       bc
-      #manpages
-      # FIXME: fix it!!!
+      man-pages
+      man-pages-posix
 
       dotfiles
 
