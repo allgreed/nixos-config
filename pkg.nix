@@ -92,8 +92,8 @@ in
         # FIXME: broken package
 
         pushover-complete
-        # FIXME: make pushover-shim - so that I can do pushover "string" and have it done
-        # TODO: package it together as a program and get rid of this uglyness
+        # https://github.com/allgreed/dotfiles/commit/b3e97d06fe58223602925be510b6f3c255cdf871
+        # TODO: package the pushover-shim as a package with a program and get rid of this uglyness - actually I can have a compiled thingy with haskell instead of interpreted crap with Python :D
       ]))
 
       wally-cli
