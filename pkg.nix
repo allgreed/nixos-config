@@ -86,20 +86,18 @@ in
 
         # those are "end-user" level actual packages
         # TODO: get rid of them?
-        (import (builtins.fetchGit {
-          url = "https://github.com/nixos/nixpkgs/";
-          ref = "refs/heads/nixos-unstable";
-          rev = "69dfa612cc27b3495b766239dec31facb1df66b9"; # random commit the should be working
-        }) { config = {} // (unfreeConfig); }).python311Packages.subliminal
-      # https://github.com/NixOS/nixpkgs/blob/a1d99c033b84177048d9380eb37aa6057f5f451a/pkgs/development/python-modules/subliminal/default.nix#L98
-        # FIXME: why u no binary?
-
         pushover-complete
         # FIXME: why u no binary? - this looks like a package problem
         # https://github.com/allgreed/dotfiles/commit/b3e97d06fe58223602925be510b6f3c255cdf871
         # TODO: package the pushover-shim as a package with a program and get rid of this uglyness - actually I can have a compiled thingy with haskell instead of interpreted crap with Python :D
       ]))
       filter-subtitles
+      (import (builtins.fetchGit {
+        url = "https://github.com/nixos/nixpkgs/";
+        ref = "refs/heads/nixos-unstable";
+        rev = "69dfa612cc27b3495b766239dec31facb1df66b9"; # random commit the should be working
+      }) { config = {} // (unfreeConfig); }).python311Packages.subliminal
+      # https://github.com/NixOS/nixpkgs/blob/a1d99c033b84177048d9380eb37aa6057f5f451a/pkgs/development/python-modules/subliminal/default.nix#L98
 
       wally-cli
       #smbclient
