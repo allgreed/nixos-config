@@ -86,8 +86,6 @@ in
 
         # those are "end-user" level actual packages
         # TODO: get rid of them?
-        subtitle-filter
-        # FIXME: why u no binary?
         (import (builtins.fetchGit {
           url = "https://github.com/nixos/nixpkgs/";
           ref = "refs/heads/nixos-unstable";
@@ -97,10 +95,11 @@ in
         # FIXME: why u no binary?
 
         pushover-complete
-        # FIXME: why u no binary?
+        # FIXME: why u no binary? - this looks like a package problem
         # https://github.com/allgreed/dotfiles/commit/b3e97d06fe58223602925be510b6f3c255cdf871
         # TODO: package the pushover-shim as a package with a program and get rid of this uglyness - actually I can have a compiled thingy with haskell instead of interpreted crap with Python :D
       ]))
+      subtitle-filter
 
       wally-cli
       #smbclient
