@@ -85,11 +85,10 @@ in
         typer
 
         # those are "end-user" level actual packages
-        # TODO: get rid of them?
+        # TODO: get rid of this once the CLI is implemented
         pushover-complete
-        # FIXME: why u no binary? - this looks like a package problem
         # https://github.com/allgreed/dotfiles/commit/b3e97d06fe58223602925be510b6f3c255cdf871
-        # TODO: package the pushover-shim as a package with a program and get rid of this uglyness - actually I can have a compiled thingy with haskell instead of interpreted crap with Python :D
+        # TODO: wait for commandline or make a PR
       ]))
       filter-subtitles
       (import (builtins.fetchGit {
