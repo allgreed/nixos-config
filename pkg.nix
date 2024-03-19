@@ -17,7 +17,7 @@ let
     ];
   };
   # TODO: how to make sure this matches the python that's used in packages lower?
-  subtitle-filter = with pkgs.python39Packages; buildPythonApplication {
+  filter-subtitles = with pkgs.python39Packages; buildPythonApplication {
     pname = "subtitle-filter";
     version = "1.4.7";
     src = builtins.fetchGit {
@@ -99,7 +99,7 @@ in
         # https://github.com/allgreed/dotfiles/commit/b3e97d06fe58223602925be510b6f3c255cdf871
         # TODO: package the pushover-shim as a package with a program and get rid of this uglyness - actually I can have a compiled thingy with haskell instead of interpreted crap with Python :D
       ]))
-      subtitle-filter
+      filter-subtitles
 
       wally-cli
       #smbclient
