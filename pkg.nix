@@ -48,12 +48,11 @@ in
     (final: prev: {
         dmenu = prev.dmenu.overrideAttrs (oldAttrs: {
           patches = [
-            # FIXME: fix this patch!
-            # /nix/store/gaj6knm0vclpzw9f2d2f9zbswrjbwjd3-dmenu-5.2.drv
-            #(prev.fetchpatch {
-              #url = "https://tools.suckless.org/dmenu/patches/line-height/dmenu-lineheight-5.0.diff";
-              #hash = "sha256-St1x4oZCqDnz7yxw7cQ0eUDY2GtL+4aqfUy8Oq5fWJk=";
-            #})
+            # FIXME: and why is nmanager not vertical?
+            (prev.fetchpatch {
+              url = "https://tools.suckless.org/dmenu/patches/line-height/dmenu-lineheight-5.2.diff";
+              hash = "sha256-QdY2T/hvFuQb4NAK7yfBgBrz7Ii7O7QmUv0BvVOdf00=";
+            })
             (prev.fetchpatch {
               url = "https://tools.suckless.org/dmenu/patches/solarized/dmenu-solarized-light-5.0.diff";
               hash = "sha256-2PIP2LsEgJF3ni89r/q9LQiQgW5h0bDew25TJBVynzc=";
