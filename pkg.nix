@@ -48,7 +48,6 @@ in
     (final: prev: {
         dmenu = prev.dmenu.overrideAttrs (oldAttrs: {
           patches = [
-            # FIXME: and why is nmanager not vertical?
             (prev.fetchpatch {
               url = "https://tools.suckless.org/dmenu/patches/line-height/dmenu-lineheight-5.2.diff";
               hash = "sha256-QdY2T/hvFuQb4NAK7yfBgBrz7Ii7O7QmUv0BvVOdf00=";
