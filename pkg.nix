@@ -10,6 +10,9 @@ let
       # my home printer drivers... maybe
       #"brgenml1lpr"
 
+      # hp scanner drivers
+      "hplip"
+
       # for zoom, although I'm not using Zoom as of lately
       #"zoom-us"
       #"zoom"
@@ -35,15 +38,20 @@ let
   }) { config = {} // (unfreeConfig); };
 in
 {
-  # TODO: ok, but how to export this to a seperate file -> see pizza.nix
   nixpkgs.config = {
+    packageOverrides = pkgs: {
+        xsaneGimp = pkgs.xsane.override { gimpSupport = true; };
+        # apparently a manual symlink is required o.0
+        # https://nixos.wiki/wiki/Scanners#GIMP_support
+      };
+  # TODO: ok, but how to export this to a seperate file -> see pizza.nix
   } // unfreeConfig;
 
   nixpkgs.overlays = [
     # https://github.com/NixOS/nixpkgs/issues/293038
     (final: prev: {
       # TODO: actually get this grub from a channel or something
-       grub2 = (import ./misc/specific-version.nix {}).grub2."2.06";
+      grub2 = (import ./misc/specific-version.nix {}).grub2."2.06";
     })
     (final: prev: {
         dmenu = prev.dmenu.overrideAttrs (oldAttrs: {
@@ -88,6 +96,7 @@ in
         # https://github.com/allgreed/dotfiles/commit/b3e97d06fe58223602925be510b6f3c255cdf871
         # TODO: wait for commandline or make a PR
       ]))
+
       filter-subtitles
       (import (builtins.fetchGit {
         url = "https://github.com/nixos/nixpkgs/";
@@ -166,6 +175,8 @@ in
       gnome3.eog # TODO: drop in favour of feh?
 
       gimp
+      xsaneGimp
+
       openscad
       freemind
 
