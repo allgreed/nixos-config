@@ -54,8 +54,9 @@ let
     } // flip mapAttrs' config.services.borgbackup.jobs (name: value:
       nameValuePair "borgbackup-job-${name}" {
         unitConfig.OnFailure = "notify-problems@%i.service";
+        # TODO: how to pass ping correctly? o.0
         preStart = lib.mkBefore ''
-          until /run/wrappers/bin/ping bootleg.tech -c1 -q >/dev/null; do /run/current-system/sw/bin/sleep 1; done
+          until /run/current-system/sw/bin/ping bootleg.tech -c1 -q >/dev/null; do /run/current-system/sw/bin/sleep 1; done
         '';
       }
     );
