@@ -100,12 +100,35 @@
         pasystray
         parcellite
         workrave
-        ];
-      };
+
+        # TODO: call package or something? make it work
+        # TODO: now link this to the launcher script
+        # TODO: contribute this to nixpkgs
+        #stdenv.mkDerivation rec {
+          #pname = "i3blocks-contrib";
+          ## not sure if there really is a versioning shcheme since it's a collection of scripts
+          #version = "9d66d81da8d521941a349da26457f4965fd6fcbd";
+
+          #src = fetchFromGitHub {
+            #owner = "vivien";
+            #repo = pname;
+            #rev = version;
+            #hash = "sha256-iY9y3zLw5rUIHZkA9YLmyTDlgzZtIYAwWgHxaCS1+PI=";
+          #};
+
+          #meta = with lib; {
+            #description = "Set of scripts (a.k.a. blocklets) for i3blocks, contributed by the community";
+            #homepage = "https://github.com/vivien/i3blocks-contrib";
+            #license = licenses.gpl3;
+            ## but... the scripts themselves may be more permissive
+            #platforms = with platforms; freebsd ++ linux;
+          #};
+        #}
+      ];
+    };
   };
 
   # fix for Workrave not persisting settings
   # TODO: actually - is this still relevant?
   programs.dconf.enable = true;
 }
-
