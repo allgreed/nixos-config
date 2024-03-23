@@ -11,6 +11,7 @@ let
       #"brgenml1lpr"
 
       # hp scanner drivers
+      # TODO: remove!
       "hplip"
 
       # for zoom, although I'm not using Zoom as of lately
@@ -54,25 +55,34 @@ in
       grub2 = (import ./misc/specific-version.nix {}).grub2."2.06";
     })
     (final: prev: {
-        dmenu = prev.dmenu.overrideAttrs (oldAttrs: {
-          patches = [
-            (prev.fetchpatch {
-              url = "https://tools.suckless.org/dmenu/patches/line-height/dmenu-lineheight-5.2.diff";
-              hash = "sha256-QdY2T/hvFuQb4NAK7yfBgBrz7Ii7O7QmUv0BvVOdf00=";
-            })
-            (prev.fetchpatch {
-              url = "https://tools.suckless.org/dmenu/patches/solarized/dmenu-solarized-light-5.0.diff";
-              hash = "sha256-2PIP2LsEgJF3ni89r/q9LQiQgW5h0bDew25TJBVynzc=";
-            })
-            (prev.fetchpatch {
-              url = "https://tools.suckless.org/dmenu/patches/xresources/dmenu-xresources-4.9.diff";
-              hash = "sha256-Np9I8hhnwmGA3W5v4tSrBN9Or8Q2Ag9x8H3yf8L9jDI=";
-            })
-            (prev.fetchpatch {
-              url = "https://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-4.9.diff";
-              hash = "sha256-zfmsKfN791z6pyv+gA6trdfKvNnCCULazVtk1sibDgA=";
-            })
-          ];
+      dmenu = prev.dmenu.overrideAttrs (oldAttrs: {
+        patches = [
+          (prev.fetchpatch {
+            url = "https://tools.suckless.org/dmenu/patches/line-height/dmenu-lineheight-5.2.diff";
+            hash = "sha256-QdY2T/hvFuQb4NAK7yfBgBrz7Ii7O7QmUv0BvVOdf00=";
+          })
+          (prev.fetchpatch {
+            url = "https://tools.suckless.org/dmenu/patches/solarized/dmenu-solarized-light-5.0.diff";
+            hash = "sha256-2PIP2LsEgJF3ni89r/q9LQiQgW5h0bDew25TJBVynzc=";
+          })
+          (prev.fetchpatch {
+            url = "https://tools.suckless.org/dmenu/patches/xresources/dmenu-xresources-4.9.diff";
+            hash = "sha256-Np9I8hhnwmGA3W5v4tSrBN9Or8Q2Ag9x8H3yf8L9jDI=";
+          })
+          (prev.fetchpatch {
+            url = "https://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-4.9.diff";
+            hash = "sha256-zfmsKfN791z6pyv+gA6trdfKvNnCCULazVtk1sibDgA=";
+          })
+        ];
+      });
+    })
+    (final: prev: {
+      # Fixes a problem that attempt to access /nix/store/.../var/lock .
+      # Without this, the scanner is not detected.
+      # see: https://github.com/NixOS/nixpkgs/issues/273280
+      sane-backends = prev.sane-backends.overrideAttrs
+        ({ configureFlags ? [ ], ... }: {
+          configureFlags = configureFlags ++ [ "--disable-locking" ];
         });
     })
   ];
