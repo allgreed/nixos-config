@@ -40,11 +40,6 @@ let
 in
 {
   nixpkgs.config = {
-    packageOverrides = pkgs: {
-        xsaneGimp = pkgs.xsane.override { gimpSupport = true; };
-        # apparently a manual symlink is required o.0
-        # https://nixos.wiki/wiki/Scanners#GIMP_support
-      };
   # TODO: ok, but how to export this to a seperate file -> see pizza.nix
   } // unfreeConfig;
 
@@ -185,7 +180,9 @@ in
       gnome3.eog # TODO: drop in favour of feh?
 
       gimp
-      xsaneGimp
+      # xsane GIMP is weird... it's way better to simple-scan + then process in GIMP
+      # TODO: test hp
+      simple-scan
 
       openscad
       freemind
