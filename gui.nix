@@ -35,19 +35,25 @@
     # however some mouses have buttons switched in hardware, so I need to unswitch them to switch them again
     inputClassSections = 
     let
-      # TODO: refactor!
-      range = lib.lists.range;
-      imap1 = lib.lists.imap1;
-      pipe = lib.trivial.pipe;
-      at1 = l: i: builtins.elemAt l (i - 1); # complements imap1
-      baseButtonMapping = range 1 8; # so 1=1, 2=2, etc.
-      disableButton = button: mapping: imap1(i: v: if i == button then 0 else v) mapping;
-      swapButtons = a: b: mapping: imap1(i: v: if i == a || i == b then (if i == a then at1 mapping b else at1 mapping a) else v) mapping;
+      inherit (lib) range pipe genAttrs attrValues;
+
+      baseButtonMapping = genAttrs (map toString (range 1 8)) (x: x);  # so { 1=1, 2=2 }, etc.
+
+      disableButton = button: mapping: mapping // { "${toString button}" = "0"; };
+      swapButtons = a: b: m: 
+        let
+          a' = toString a;
+          b' = toString b;
+        in
+          m // { "${a'}" = m."${b'}"; "${b'}" = m."${a'}"; };
+
       theButtonMapping = pipe baseButtonMapping [
         # the southpaws reswap
         (swapButtons 1 3)
-        # 8 is really anoying with this mouse (upper side button) as Firefox interprets it as "history back" and that screws up long forms if pressed accidentally and then you have to fill that fucking form agaINIHATEFILLINGFORMS
+        # 8 is really anoying with this mouse (upper side button) as Firefox interprets it
+        # as "history back" and that screws up long forms if pressed accidentally
         (disableButton 8)
+        attrValues
         toString
       ];
     in
