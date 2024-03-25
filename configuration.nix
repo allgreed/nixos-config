@@ -165,7 +165,7 @@ in
   hardware.sane.enable = true;  # scanning
   # TODO: what is it? apparently it's needed for a USB scanner https://nixos.wiki/wiki/Scanners
   services.ipp-usb.enable=true;
-  hardware.sane.extraBackends = [ pkgs.hplipWithPlugin pkgs.sane-airscan ];
+  hardware.sane.extraBackends = [ pkgs.sane-airscan ];
 
   users = {
     mutableUsers = false;

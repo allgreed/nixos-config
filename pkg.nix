@@ -10,10 +10,6 @@ let
       # my home printer drivers... maybe
       #"brgenml1lpr"
 
-      # hp scanner drivers
-      # TODO: remove!
-      "hplip"
-
       # for zoom, although I'm not using Zoom as of lately
       #"zoom-us"
       #"zoom"
@@ -186,7 +182,6 @@ in
 
       gimp
       # xsane GIMP is weird... it's way better to simple-scan + then process in GIMP
-      # TODO: test hp
       simple-scan
 
       openscad
