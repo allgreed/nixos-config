@@ -37,7 +37,7 @@
     let
       inherit (lib) range pipe genAttrs attrValues;
 
-      baseButtonMapping = genAttrs (map toString (range 1 8)) (x: x);  # so { 1=1, 2=2 }, etc.
+      baseButtonMapping = genAttrs (map toString (range 1 8)) (x: x);  # so { 1=1;, 2=2; }, etc.
 
       disableButton = button: mapping: mapping // { "${toString button}" = "0"; };
       swapButtons = a: b: m: 

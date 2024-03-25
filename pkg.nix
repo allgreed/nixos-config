@@ -1,4 +1,4 @@
-{ config, pkgs, callPackage, ... }: 
+{ pkgs, ... }: 
 let
   #unfreeConfig = import ./pizza.nix;
   unfreeConfig = {
@@ -81,6 +81,11 @@ in
         });
     })
   ];
+
+  # taskwarrior config needs a stable path to point to, maaaaybe it'd be better handled by home-manager, but right not it's what it is ;)
+  environment.etc.taskwarrior_share = {
+    source = "${pkgs.taskwarrior}/share";
+  };
 
   environment.systemPackages = with pkgs; [
       (python311.withPackages(ps: with ps; [ 
