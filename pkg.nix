@@ -89,12 +89,13 @@ in
 
         # I sometimes like to prototype and just want this to be there
         requests
-        tasklib
 
         # global dependencies, shouldn't be here really...
+        tasklib
         click
         i3ipc
         typer
+        pexpect
 
         # those are "end-user" level actual packages
         # TODO: get rid of this once the CLI is implemented
@@ -202,7 +203,6 @@ in
       ramboxPkgs.rambox
 
       gnumake # build / script automation
-      expect # interactive script automation utility
       git
 
       pirate-get
