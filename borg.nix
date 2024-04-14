@@ -2,8 +2,8 @@
 let 
   homeExcludes = [
     # for now
-    ".config/Rambox/"
-    ".arduino15"
+    ".config/Rambox/" # <- wtf why it's 4+ gigs? o.0
+    ".arduino15" # cache + packages likely, would be good to have a look, but I haven't played with ino for a while
 
     # caches
     ".cache"
@@ -109,6 +109,9 @@ in
       # TODO: later - mk borg user, maybe even nixos anywhere xD
       #environment.BORG_RELOCATED_REPO_ACCESS_IS_OK="yes";
       repo = "root@remote-backup:.";
+      patterns = [
+        "+ Downloads/archive"
+      ];
     };
     home2 = homeJobTemplate // {
       # maaaybe drop the repokey and just don't encrypt on borg level once the actual drives are encrytped locally
