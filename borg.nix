@@ -2,8 +2,10 @@
 let 
   homeExcludes = [
     # for now
+    # TODO: clear when it's no longer "now"
     ".config/Rambox/" # <- wtf why it's 4+ gigs? o.0
     ".arduino15" # cache + packages likely, would be good to have a look, but I haven't played with ino for a while
+    ".local/share/containers" # there's a task to figure out what to do with it
 
     # caches
     ".cache"
