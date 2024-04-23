@@ -1,6 +1,36 @@
-{ config, pkgs, lib, callPackage, ... }: 
+{ config, pkgs, lib, ... }: 
+let
+  # TODO: contribute this to nixpkgs
+  i3blocks-contrib = with pkgs; (pkgs.callPackage ({}: pkgs.stdenv.mkDerivation (finalAttrs: rec {
+    pname = "i3blocks-contrib";
+    # not sure if there really is a versioning shcheme since it's a collection of scripts
+    version = "9d66d81da8d521941a349da26457f4965fd6fcbd";
+
+    src = fetchFromGitHub {
+      owner = "vivien";
+      repo = pname;
+      rev = version;
+      hash = "sha256-iY9y3zLw5rUIHZkA9YLmyTDlgzZtIYAwWgHxaCS1+PI=";
+    };
+
+    meta = with lib; {
+      description = "Set of scripts (a.k.a. blocklets) for i3blocks, contributed by the community";
+      homepage = "https://github.com/vivien/i3blocks-contrib";
+      license = licenses.gpl3;
+      # but... the scripts themselves may be more permissive
+      platforms = with platforms; freebsd ++ linux;
+    };
+  })) {});
+in
 {
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw  ???? --- what does this do?? xD
+
+  # TODO: would symlinking it to /opt/i3blocks/block_name/block_name would be ugly af?
+  # TODO: is this the best way?
+  environment.etc."i3block-contrib-location" = {
+    text = "${i3blocks-contrib}";
+    mode = "0444";
+  };
 
   fonts.packages = with pkgs; [
     source-code-pro
@@ -106,30 +136,7 @@
         pasystray
         parcellite
         workrave
-
-        # TODO: call package or something? make it work
-        # TODO: now link this to the launcher script
-        # TODO: contribute this to nixpkgs
-        #stdenv.mkDerivation rec {
-          #pname = "i3blocks-contrib";
-          ## not sure if there really is a versioning shcheme since it's a collection of scripts
-          #version = "9d66d81da8d521941a349da26457f4965fd6fcbd";
-
-          #src = fetchFromGitHub {
-            #owner = "vivien";
-            #repo = pname;
-            #rev = version;
-            #hash = "sha256-iY9y3zLw5rUIHZkA9YLmyTDlgzZtIYAwWgHxaCS1+PI=";
-          #};
-
-          #meta = with lib; {
-            #description = "Set of scripts (a.k.a. blocklets) for i3blocks, contributed by the community";
-            #homepage = "https://github.com/vivien/i3blocks-contrib";
-            #license = licenses.gpl3;
-            ## but... the scripts themselves may be more permissive
-            #platforms = with platforms; freebsd ++ linux;
-          #};
-        #}
+        i3blocks-contrib
       ];
     };
   };
