@@ -212,6 +212,9 @@ in
         }
       ];
     };
+    apparmor = {
+      enable = true;
+    };
   };
   # might still be required for some stuff
   # TOOD: the invocation I really want
