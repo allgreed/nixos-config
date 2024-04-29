@@ -103,6 +103,7 @@ in
         # https://github.com/allgreed/dotfiles/commit/b3e97d06fe58223602925be510b6f3c255cdf871
         # TODO: wait for commandline or make a PR
       ]))
+      pyright
 
       filter-subtitles
       (import (builtins.fetchGit {
