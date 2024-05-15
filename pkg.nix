@@ -14,6 +14,8 @@ let
       #"zoom-us"
       #"zoom"
       #"faac"
+
+      "hubstaff"
     ];
   };
   # TODO: how to make sure this matches the python that's used in packages lower?
@@ -76,6 +78,34 @@ in
           configureFlags = configureFlags ++ [ "--disable-locking" ];
         });
     })
+    # TODO: let them know
+    # TODO: make Github issue and link it here
+    # TODO: clean it up
+    # TODO: upstream sensibly
+    (final: prev: 
+    let
+      v = "1.6.23-5c646160";
+    in
+    {
+      hubstaff = prev.hubstaff.overrideAttrs ({
+        version = v;
+        # the last section is a HACK HACK HACK
+        # so the installPhase removes this directories, which are apparently not present in the lastest thingy
+        # but it errors, since it doesn't have the -f flag
+        unpackCmd = prev.hubstaff.unpackCmd + ''
+          mkdir data/x86
+          mkdir -p data/x86_64/lib64
+        '';
+        # TODO: figure out if I can at least pin the hash and just make the local file a mirror
+        # this is another HACK
+        # I cannot get the sources to play nicely with nix so I've just downloaded the latest version and keep it in my Downloads folder. Super*not*reproducible
+        src = /home/allgreed/Downloads/Hubstaff-1.6.23-5c646160.sh;
+        #src = builtins.fetchurl {
+          #url = "https://hubstaff-production.s3.amazonaws.com/downloads/HubstaffClient/Builds/Release/${v}/Hubstaff-${v}.sh";
+          #sha256 = "";
+        #};
+      });
+    })
   ];
 
   # taskwarrior config needs a stable path to point to, maaaaybe it'd be better handled by home-manager, but right not it's what it is ;)
@@ -84,6 +114,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+      hubstaff
       (python311.withPackages(ps: with ps; [ 
         ptpython  # my repl shell
 
