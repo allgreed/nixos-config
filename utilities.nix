@@ -52,6 +52,8 @@
   };
 
   config.systemd.services.tw-ical-feed-uploader = {
+    # TODO: use more dynamic users
+    # https://0pointer.net/blog/dynamic-users-with-systemd.html
     # TODO: actually the processing & upload could happen in a pipe, so that there's no need for writing to disk
     # TODO: lower service privilage -> read ~/.task;
     # TODO: and actually -> this could run only and directly after a change is made to a task's sheduled or due attribute or a task with said attribute set
