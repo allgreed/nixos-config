@@ -165,11 +165,10 @@ in
         Only men.    [0m
   '';
 
-  # take a shitlong to rebuild, maybe later...
-  #hardware.sane.enable = true;  # scanning
+  hardware.sane.enable = true;  # scanning
   # TODO: what is it? apparently it's needed for a USB scanner https://nixos.wiki/wiki/Scanners
-  #services.ipp-usb.enable=true;
-  #hardware.sane.extraBackends = [ pkgs.sane-airscan ];
+  services.ipp-usb.enable=true;
+  hardware.sane.extraBackends = [ pkgs.sane-airscan ];
 
   users = {
     mutableUsers = false;
@@ -181,7 +180,7 @@ in
           "networkmanager"
           "audio"
 
-          # printing
+          # printing & scanning
           "lpadmin"
           "lp"
           "scanner"
