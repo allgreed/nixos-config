@@ -135,6 +135,8 @@ in
         # TODO: wait for commandline or make a PR
       ]))
       pyright
+      # TODO: this might require unstable?
+      ruff-lsp
 
       filter-subtitles
       (import (builtins.fetchGit {
