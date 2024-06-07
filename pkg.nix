@@ -209,6 +209,7 @@ in
 
       pavucontrol
 
+      lsix
       evince
       vlc
       mpv
