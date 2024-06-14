@@ -6,6 +6,7 @@ let
     ".config/Rambox/" # <- wtf why it's 4+ gigs? o.0
     ".arduino15" # cache + packages likely, would be good to have a look, but I haven't played with ino for a while
     ".local/share/containers" # there's a task to figure out what to do with it
+    "Work" # will switch to a seperate machine someday, just want to make sure it doesn't end up in the wrong place
 
     # caches
     ".cache"
