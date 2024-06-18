@@ -1,2 +1,0 @@
-echo 'in the shell do: grub-install --root-directory=/mnt /dev/sda [then sdb]'
-nix-shell -p "(import (builtins.fetchurl https://matthewbauer.us/generate-versions.nix) {}).grub2.\"2.04\""

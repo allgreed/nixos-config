@@ -1,0 +1,2 @@
+echo 'in the shell do: grub-install --root-directory=/mnt /dev/sda [then sdb]'
+nix-shell -p "(import ./specific-version.nix {}).grub2.\"2.12\""

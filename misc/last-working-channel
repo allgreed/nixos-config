@@ -1,1 +1,0 @@
- nix-channel --add https://nixos.org/channels/nixos-21.05 nixos
