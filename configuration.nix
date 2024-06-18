@@ -40,21 +40,27 @@ in
   virtualisation.oci-containers.backend = "podman";
 
   boot = {
-    tmp.useTmpfs = true;
-    loader.grub.enable = true;
+    # TODO: form an opinion, although /tmp that's actually persistent seems like fun
+    #tmp.useTmpfs = true;
 
-    loader.grub.zfsSupport = true;
-    # TODO: how much of this is redundant with zfsSupport to true?
-    # ZFS required, but generally won't hurt
-    supportedFilesystems = [ "zfs" ];
-    loader.grub.copyKernels = true;
-    # ???
-    initrd.supportedFilesystems = [ "zfs" ];
+  loader.grub = {
+    enable = true;
+    zfsSupport = true;
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+    # TODO: this relevant?
+    # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+    copyKernels = true;
+    mirroredBoots = [
+      { devices = [ "nodev"]; path = "/boot"; }
+    ];
+  };
 
     # for usbip
     extraModulePackages = with config.boot.kernelPackages; [ usbip ];
     kernelModules = [ "vhci-hcd" ];
 
+    # TODO: there's an option to do all this in 24.05 I guess?
     # TODO: try after upgrading the channel to something latest
     #binfmt.registrations.appimage = {
       #wrapInterpreterInShell = false;
@@ -73,6 +79,11 @@ in
       package = pkgs.pulseaudioFull;
       extraConfig = "unload-module module-role-cork"; # prevents Teams/whatnot from muting other streams
   };
+  # TODO: which is more fun? :D
+  # services.pipewire = {
+  #   enable = true;
+  #   pulse.enable = true;
+  # };
 
   # udev rules for flashing / live-training
   hardware.keyboard.zsa.enable = true;
@@ -82,6 +93,9 @@ in
     # don’t shutdown when power button is short-pressed
     HandlePowerKey=ignore
   '';
+
+  # this is being tried out
+  system.copySystemConfiguration = true;
 
   services.spotifyd.enable = true;
 
@@ -196,8 +210,18 @@ in
 
   services.trezord.enable = true;
 
+  # might still be required for some stuff
+  # TOOD: the invocation I really want
+  # doas nixos-rebuild build && doas ./result/bin/switch-to-configuration switch
+  # https://github.com/NixOS/nixpkgs/pull/289680
+  # TODO: how to update to this patch?
+  #environment.systemPackages = with pkgs; [
+  #  doas-sudo-shim
+  #];
   security = {
-    sudo.enable = false;  # yes, it's a statement
+    #sudo.enable = false;  # yes, it's a statement
+    # apparently we can't have nice things, see if it's beeter with 24.05
+    sudo.enable = true;
     doas = {
       enable = true;
       extraRules = [
@@ -215,20 +239,12 @@ in
       enable = true;
     };
   };
-  # might still be required for some stuff
-  # TOOD: the invocation I really want
-  # doas nixos-rebuild build && doas ./result/bin/switch-to-configuration switch
-  # https://github.com/NixOS/nixpkgs/pull/289680
-  # TODO: how to update to this patch?
-  environment.systemPackages = with pkgs; [
-    doas-sudo-shim
-  ];
 
   # TODO: hmmm? how usefulll is this?
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryFlavor = "curses";
-  };
+  #programs.gnupg.agent = {
+  #  enable = true;
+  #  pinentryFlavor = "curses";
+  #};
 
   # otherwise the logs will just pile up...
   services.journald.extraConfig = ''
@@ -248,5 +264,5 @@ in
   #];
 
   # Kto ma wiedzieć, ten wie
-  system.stateVersion = "22.05";
+  system.stateVersion = "24.05";
 }

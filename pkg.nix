@@ -42,11 +42,6 @@ in
   } // unfreeConfig;
 
   nixpkgs.overlays = [
-    # https://github.com/NixOS/nixpkgs/issues/293038
-    (final: prev: {
-      # TODO: actually get this grub from a channel or something
-      grub2 = (import ./misc/specific-version.nix {}).grub2."2.06";
-    })
     (final: prev: {
       dmenu = prev.dmenu.overrideAttrs (oldAttrs: {
         patches = [
