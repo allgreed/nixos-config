@@ -25,10 +25,6 @@ cat <<EOF > $tmp
 { config, pkgs, ... }:
 
 {
-  boot.loader.grub.devices = [
-$(for d in $pool_devices ; do echo "    \"$d\""; done)
-  ];
-
   # machine identification
   networking.hostName = "$hostname";
   networking.hostId = "$(head -c 8 /etc/machine-id)";
