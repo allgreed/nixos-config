@@ -1,2 +1,4 @@
 mount -t zfs rpool/local/nix /mnt/nix
+mount -t zfs rpool/data/var /mnt/var
 mount -t zfs rpool/data/home /mnt/home
+mount -t zfs rpool/local/user-cache /mnt/home/allgreed/.cache

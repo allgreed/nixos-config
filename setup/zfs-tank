@@ -1,7 +1,19 @@
 # vim: set ft=bash :
-# TODO: choose the initial drive
+read -ep 'Primary vdev (zfs partition of the primary drive): ' the_vdev
 
 # TODO: partition it
 # TODO: setup a single vdev pool with that drive and call it tank
-# if ssd:
-zpool set autotrim=on tank
+
+# https://jrs-s.net/2018/08/17/zfs-tuning-cheat-sheet/ 
+# claims compression to be faster than storage
+# below is tuned for a daily driver / dev machine
+# deliberately leaving recordsize alone
+# TODO: form a more sophisticated opinion on the iter count
+zpool create \
+	-O compression=lz4 \
+	-O encryption=aes-256-gcm \
+	-O keyformat=passphrase \
+	-O pbkdf2iters=1000000 \
+	-O mountpoint=none -O xattr=sa -O acltype=posixacl -o ashift=12 \
+	-o autotrim=on \
+	tank "$the_vdev"

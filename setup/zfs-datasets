@@ -1,5 +1,9 @@
 # vim: set ft=bash :
 # order matters
+
+# TODO: this should be 15% of the pool size, for performance reasons
+# also: in CoW systems deletion actually needs space, this is the space
+# if I ever run out
 zfs create -o mountpoint=none -o refreservation=1G tank/reserved
 
 zfs create -o mountpoint=none tank/local
@@ -8,20 +12,26 @@ zfs create -o mountpoint=legacy tank/local/user-cache
 
 zfs create -o mountpoint=none -o com.sun:auto-snapshot=true tank/data
 zfs create -o mountpoint=legacy tank/data/home
-zfs create -o mountpoint=legacy -o com.sun:auto-snapshot:weekly=false  -o xattr=sa -o acltype=posixacl tank/data/root
+zfs create -o mountpoint=legacy -o com.sun:auto-snapshot:weekly=false tank/data/root
+zfs create -o mountpoint=legacy -o com.sun:auto-snapshot:weekly=false tank/data/var
 
 # TODO: https://grahamc.com/blog/erase-your-darlings/
 # also: TODO: https://nixos.wiki/wiki/Impermanence
 
 mount -t zfs tank/data/root /mnt
 
-mkdir /mnt/home
+mkdir -p /mnt/var
+mount -t zfs tank/data/var /mnt/var
+mkdir -p /mnt/home
 mount -t zfs tank/data/home /mnt/home
-mkdir /mnt/nix # <- is this a good idea?
+mkdir -p /mnt/nix
 mount -t zfs tank/local/nix /mnt/nix
 
 mkdir -p /mnt/home/allgreed/.cache
 mount -t zfs tank/local/user-cache /mnt/home/allgreed/.cache
+
+mkdir -p /mnt/boot
+mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
 
 echo
 echo 'Now generate hardware configuration!'
