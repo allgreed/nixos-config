@@ -26,7 +26,6 @@ in
       # Create a `docker` alias for podman, to use it as a drop-in replacement
       dockerCompat = true;
 
-      # TODO: reenable after bumping
       # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
 
@@ -48,8 +47,6 @@ in
     zfsSupport = true;
     efiSupport = true;
     efiInstallAsRemovable = true;
-    # TODO: this relevant?
-    # boot.loader.efi.efiSysMountPoint = "/boot/efi";
     copyKernels = true;
     mirroredBoots = [
       { devices = [ "nodev"]; path = "/boot"; }
@@ -97,6 +94,8 @@ in
   # this is being tried out
   system.copySystemConfiguration = true;
 
+  # TODO: group services entries I guess
+  # doesn't it cause some weird merging issues?
   services.spotifyd.enable = true;
 
   services.tzupdate.enable = true;
@@ -210,9 +209,7 @@ in
 
   services.trezord.enable = true;
 
-  # might still be required for some stuff
-  # TOOD: the invocation I really want
-  # doas nixos-rebuild build && doas ./result/bin/switch-to-configuration switch
+  # TODO: is this done?
   # https://github.com/NixOS/nixpkgs/pull/289680
   # TODO: how to update to this patch?
   #environment.systemPackages = with pkgs; [
@@ -239,12 +236,6 @@ in
       enable = true;
     };
   };
-
-  # TODO: hmmm? how usefulll is this?
-  #programs.gnupg.agent = {
-  #  enable = true;
-  #  pinentryFlavor = "curses";
-  #};
 
   # otherwise the logs will just pile up...
   services.journald.extraConfig = ''
