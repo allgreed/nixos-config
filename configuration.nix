@@ -57,6 +57,8 @@ in
     extraModulePackages = with config.boot.kernelPackages; [ usbip ];
     kernelModules = [ "vhci-hcd" ];
 
+    kernelParams = [ "nohibernate" ];
+
     # TODO: there's an option to do all this in 24.05 I guess?
     # TODO: try after upgrading the channel to something latest
     #binfmt.registrations.appimage = {
