@@ -142,8 +142,6 @@ in
       # https://github.com/NixOS/nixpkgs/blob/a1d99c033b84177048d9380eb37aa6057f5f451a/pkgs/development/python-modules/subliminal/default.nix#L98
 
       wally-cli
-      #smbclient
-      # TODO: FIX IT!
       macchanger
 
       cachix
@@ -230,7 +228,7 @@ in
       mkpasswd
       lastpass-cli
 
-      ramboxPkgs.rambox
+      rambox
 
       gnumake # build / script automation
       git
