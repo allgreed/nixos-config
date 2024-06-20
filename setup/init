@@ -8,17 +8,13 @@ fi
 git --git-dir=/etc/nixos/.git remote set-url --push origin git@github.com:allgreed/nixos-config.git
 git --git-dir=/home/allgreed/Dotfiles/.git remote set-url --push origin git@github.com:allgreed/dotfiles.git
 
-mkdir -p /mnt /media /var/cache/iso /var/state/borgjobs /var/state/gmail-scrapper
-chown allgreed /var/cache/iso
-chown allgreed /var/state/borgjobs
-chown allgreed /var/state/gmail-scrapper
+# I kindof like having it
+mkdir -p /mnt
 
 read -ep 'Hostname: ' hostname
 hashed_password=$(mkpasswd -m sha512crypt)
 read -ep 'Spotify username: ' spotify_username
 read -ep 'Spotify password: ' spotify_password
-zpool=$(zpool list -o name -H | tail -n 1)
-pool_devices=$(zpool list -vHP $zpool | grep dev | cut -f 2)
 
 tmp=$(mktemp)
 cat <<EOF > $tmp

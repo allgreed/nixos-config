@@ -1,4 +1,5 @@
 { pkgs, ... }: 
+# TODO: make this user services
 let 
   homeExcludes = [
     # for now
