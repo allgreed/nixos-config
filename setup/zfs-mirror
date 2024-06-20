@@ -1,5 +1,14 @@
 # vim: set ft=bash :
 # TODO: choose the mirrored drive
+# TODO: ensure the partition layout is suitable for mirroring
+# so... a boot partition and a parition to mirror the root (largest?) partition of the other drive
+#
+# TODO: choose the mirrored vdev
+# TODO: ensure it's using /by-id
+new_vdev="..."
 
-# TODO: copy partition table from single vdev from tank
-# TODO: add drive to the mirror
+# TODO: obtain this automatically
+# at this point it should be the only vdev of the only pool
+primary_vdev="..."
+
+zpool attach -sw tank $primary_vdev $new_vdev; pushover "Resilvering done!"

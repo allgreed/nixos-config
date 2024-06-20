@@ -1,5 +1,6 @@
 # vim: set ft=bash :
 read -ep 'Primary vdev (zfs partition of the primary drive): ' the_vdev
+# TODO: verify that the primary vdev uses /by-id
 
 # TODO: partition it
 # TODO: setup a single vdev pool with that drive and call it tank
