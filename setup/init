@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
+luser="allgreed"
 
-if [ ! -d /home/allgreed/Dotfiles ]; then
-    git clone https://github.com/allgreed/dotfiles.git /home/allgreed/Dotfiles 
+if [ ! -d /home/$luser/Dotfiles ]; then
+    git clone https://github.com/allgreed/dotfiles.git /home/$luser/Dotfiles 
 fi
 
 git --git-dir=/etc/nixos/.git remote set-url --push origin git@github.com:allgreed/nixos-config.git
-git --git-dir=/home/allgreed/Dotfiles/.git remote set-url --push origin git@github.com:allgreed/dotfiles.git
+git --git-dir=/home/$luser/Dotfiles/.git remote set-url --push origin git@github.com:allgreed/dotfiles.git
 
 # I kindof like having it
 mkdir -p /mnt
@@ -15,6 +16,11 @@ read -ep 'Hostname: ' hostname
 hashed_password=$(mkpasswd -m sha512crypt)
 read -ep 'Spotify username: ' spotify_username
 read -ep 'Spotify password: ' spotify_password
+
+# might not be necessary and should be fixed at some point
+# https://github.com/NixOS/nix/issues/3356#issuecomment-1642611739
+mkdir -p /nix/var/nix/profiles/per-user/$luser
+chown $luser /nix/var/nix/profiles/per-user/$luser
 
 tmp=$(mktemp)
 cat <<EOF > $tmp
@@ -26,7 +32,7 @@ cat <<EOF > $tmp
   networking.hostId = "$(head -c 8 /etc/machine-id)";
 
   # secrets
-  users.users."allgreed".hashedPassword = "$hashed_password";
+  users.users."$luser".hashedPassword = "$hashed_password";
   services.spotifyd.config = ''
     [global]
     username = "$spotify_username"
