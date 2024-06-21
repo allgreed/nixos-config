@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: 
+{ pkgs, lib, ... }: 
 let
   # TODO: contribute this to nixpkgs
   i3blocks-contrib = with pkgs; (pkgs.callPackage ({}: pkgs.stdenv.mkDerivation (finalAttrs: rec {
@@ -48,18 +48,13 @@ in
     # (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
   ];
 
+  # should make the touchpad work, but it doesn't
+  # but maybe that's a HW issue on Sarah, dunno lol
+  services.libinput.enable = true;
+
+  services.displayManager.defaultSession = "none+i3";
   services.xserver = {
     enable = true;
-
-    autorun = false;
-    displayManager = {
-      startx.enable = true;
-      defaultSession = "none+i3";
-    };
-
-    # should make the touchpad work, but it doesn't
-    # but maybe that's a HW issue on Sarah, dunno lol
-    libinput.enable = true;
 
     # I handle southpaws at the Xmodmap level (so that it's portable and works also on non-Nixos systems)
     # however some mouses have buttons switched in hardware, so I need to unswitch them to switch them again
@@ -96,13 +91,21 @@ in
     ''
     ];
 
-    layout = "pl";
-    xkbOptions = "caps:ctrl_modifier";
-
-    desktopManager = {
-        xterm.enable = false;
+    xkb = {
+      layout = "pl";
+      options = "caps:ctrl_modifier";
     };
 
+    ###
+    autorun = false;
+    displayManager = {
+      startx.enable = true;
+    };
+    desktopManager = {
+      # TODO: what does this really do?
+      xterm.enable = false;
+    };
+    ### ^ this is necessary to have 3-line bash display manager xD
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
