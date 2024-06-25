@@ -3,8 +3,6 @@ let
   #unfreeConfig = import ./pizza.nix;
   unfreeConfig = {
     allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-      "rambox"
-
       "google-chrome"
 
       # my home printer drivers... maybe
@@ -28,8 +26,8 @@ let
     };
   };
 
-  # TODO: actually use latest Rambox or switch to something else
   # TODO: SEE USAGES VERY CAREFULLY!
+  # https://github.com/NixOS/nixpkgs/pull/320798
   ramboxPkgs = import (builtins.fetchGit {
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
@@ -227,8 +225,6 @@ in
 
       mkpasswd
       lastpass-cli
-
-      rambox
 
       gnumake # build / script automation
       git
