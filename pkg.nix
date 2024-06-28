@@ -8,10 +8,7 @@ let
       # my home printer drivers... maybe
       #"brgenml1lpr"
 
-      # for zoom, although I'm not using Zoom as of lately
-      #"zoom-us"
-      #"zoom"
-      #"faac"
+      "zoom"
 
       "hubstaff"
     ];
@@ -263,6 +260,6 @@ in
 
       # I don't need it *right now*, but with all the interviews and other bullshit it sometimes come in handy
       # otherwise fuck them
-      #zoom-us
+      zoom-us
   ];
 }
