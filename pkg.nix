@@ -142,6 +142,8 @@ in
       calibre
       et
 
+      tg
+
       sox
       linuxPackages.usbip
 
