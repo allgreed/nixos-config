@@ -68,9 +68,8 @@ in
           configureFlags = configureFlags ++ [ "--disable-locking" ];
         });
     })
-    # TODO: make Github issue and link it here
-    # TODO: clean it up
-    # TODO: upstream sensibly
+    # TODO: use the upstreamed version :D
+    # https://github.com/NixOS/nixpkgs/pull/325417
     (final: prev: {
       hubstaff = prev.hubstaff.overrideAttrs ({
         version = "1.6.23-5c646160";
