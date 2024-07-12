@@ -124,16 +124,6 @@ in
     allowAnyUser = true;
   };
 
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [
-      #brlaser
-      #brgenml1lpr
-      #brgenml1cupswrapper
-      #cups-brother-hl1210w
-    ];
-  };
-
   programs.ssh = {
     startAgent = true;
     extraConfig = ''

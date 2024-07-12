@@ -5,12 +5,7 @@ let
     allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
       "google-chrome"
 
-      # my home printer drivers... maybe
-      #"brgenml1lpr"
-
       "zoom"
-
-      "hubstaff"
     ];
   };
   # TODO: how to make sure this matches the python that's used in packages lower?
@@ -68,25 +63,6 @@ in
           configureFlags = configureFlags ++ [ "--disable-locking" ];
         });
     })
-    # TODO: use the upstreamed version :D
-    # https://github.com/NixOS/nixpkgs/pull/325417
-    (final: prev: {
-      hubstaff = prev.hubstaff.overrideAttrs ({
-        version = "1.6.23-5c646160";
-        # the last section is a HACK HACK HACK
-        # so the installPhase removes this directories, which are apparently not present in the lastest thingy
-        # but it errors, since it doesn't have the -f flag
-        unpackCmd = prev.hubstaff.unpackCmd + ''
-          mkdir data/x86
-          mkdir -p data/x86_64/lib64
-        '';
-
-        src = builtins.fetchurl {
-          url = "https://app.hubstaff.com/download/7307-standard-linux-1-6-23-release";
-          sha256 = "sha256:0xif5ydbpz1zpvvzlg9v377m6gxv0aj575c82pspsvzwv2da5pcj";
-        };
-      });
-    })
   ];
 
   # taskwarrior config needs a stable path to point to, maaaaybe it'd be better handled by home-manager, but right not it's what it is ;)
@@ -95,7 +71,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-      hubstaff
       (python311.withPackages(ps: with ps; [ 
         ptpython  # my repl shell
 
