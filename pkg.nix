@@ -25,6 +25,11 @@ let
     ref = "refs/heads/nixos-unstable";
     rev = "f2537a505d45c31fe5d9c27ea9829b6f4c4e6ac5"; # 27-06-2022 <- this works
   }) { config = {} // (unfreeConfig); };
+  latestPkgs = import (builtins.fetchGit {
+    url = "https://github.com/nixos/nixpkgs/";
+    ref = "refs/heads/nixos-unstable";
+    rev = "1d9c2c9b3e71b9ee663d11c5d298727dace8d374"; # 22-07-2024
+  }) { config = {} // (unfreeConfig); };
 in
 {
   nixpkgs.config = {
@@ -116,7 +121,8 @@ in
       calibre
       et
 
-      tg
+      # for sending messages fix
+      latestPkgs.tg
 
       sox
       linuxPackages.usbip
@@ -198,6 +204,9 @@ in
       deluge
 
       taskwarrior
+      # TODO: migrate to taskwarrior3 after they handle the perfomance issues
+      # https://github.com/GothenburgBitFactory/taskwarrior/issues/3329
+      #taskwarrior3
       tasksh
       vit
 
@@ -225,6 +234,9 @@ in
       gramps
 
       ffmpeg
+
+      ncdu
+      # baobab equivalent
 
       # I don't need it *right now*, but with all the interviews and other bullshit it sometimes come in handy
       # otherwise fuck them
