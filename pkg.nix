@@ -234,6 +234,7 @@ in
       gramps
 
       ffmpeg
+      dos2unix
 
       ncdu
       # baobab equivalent
