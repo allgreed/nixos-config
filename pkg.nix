@@ -208,7 +208,6 @@ in
       # https://github.com/GothenburgBitFactory/taskwarrior/issues/3329
       #taskwarrior3
       tasksh
-      vit
 
       jq # manipulate JSON
 
