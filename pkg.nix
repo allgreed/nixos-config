@@ -32,6 +32,11 @@ let
   }) { config = {} // (unfreeConfig); };
 in
 {
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
   nixpkgs.config = {
   # TODO: ok, but how to export this to a seperate file -> see pizza.nix
   } // unfreeConfig;
@@ -115,8 +120,6 @@ in
 
       bat
       tealdeer
-
-      appimage-run
 
       calibre
       et
