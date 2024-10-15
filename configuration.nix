@@ -57,7 +57,11 @@ in
     extraModulePackages = with config.boot.kernelPackages; [ usbip ];
     kernelModules = [ "vhci-hcd" ];
 
-    kernelParams = [ "nohibernate" ];
+    kernelParams = [
+      "nohibernate"
+      # TODO: test if it boots
+      #"elevator=none"
+  ];
 
   };
 

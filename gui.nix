@@ -62,7 +62,11 @@ in
     let
       inherit (lib) range pipe genAttrs attrValues;
 
-      baseButtonMapping = genAttrs (map toString (range 1 8)) (x: x);  # so { 1=1;, 2=2; }, etc.
+      idButtonMapping = genAttrs (map toString (range 1 8)) (x: x);  # so { 1=1;, 2=2; }, etc.
+      mkButtonMapping = funcs: pipe idButtonMapping (funcs ++ [
+        attrValues
+        toString
+      ]);
 
       disableButton = button: mapping: mapping // { "${toString button}" = "0"; };
       swapButtons = a: b: m: 
@@ -72,14 +76,12 @@ in
         in
           m // { "${a'}" = m."${b'}"; "${b'}" = m."${a'}"; };
 
-      theButtonMapping = pipe baseButtonMapping [
+      theButtonMapping = mkButtonMapping [
         # the southpaws reswap
         (swapButtons 1 3)
         # 8 is really anoying with this mouse (upper side button) as Firefox interprets it
         # as "history back" and that screws up long forms if pressed accidentally
         (disableButton 8)
-        attrValues
-        toString
       ];
     in
     [
