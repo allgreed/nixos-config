@@ -75,7 +75,7 @@ in
     })
   ];
 
-  # taskwarrior config needs a stable path to point to, maaaaybe it'd be better handled by home-manager, but right not it's what it is ;)
+  # taskwarrior config needs a stable path to point to, maaaaybe it'd be better handled by home-manager, but right now it's what it is ;)
   environment.etc.taskwarrior_share = {
     source = "${pkgs.taskwarrior}/share";
   };
@@ -103,6 +103,9 @@ in
       pyright
       # TODO: this might require unstable?
       ruff-lsp
+
+      # testing!
+      delta
 
       filter-subtitles
       (import (builtins.fetchGit {
