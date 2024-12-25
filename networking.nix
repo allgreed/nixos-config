@@ -5,6 +5,8 @@
     # comment the line below to enable some of the captive portal-based networking
     # TODO: make it werk
     #dns = "dnsmasq";
+
+    wifi.scanRandMacAddress = false;
   };
 
   services.dnsmasq = {
