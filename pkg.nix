@@ -57,10 +57,11 @@ in
             url = "https://tools.suckless.org/dmenu/patches/xresources/dmenu-xresources-4.9.diff";
             hash = "sha256-Np9I8hhnwmGA3W5v4tSrBN9Or8Q2Ag9x8H3yf8L9jDI=";
           })
-          (prev.fetchpatch {
-            url = "https://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-4.9.diff";
-            hash = "sha256-zfmsKfN791z6pyv+gA6trdfKvNnCCULazVtk1sibDgA=";
-          })
+    	  # TODO: fix this patch - hunk 4 has some problems!
+          #(prev.fetchpatch {
+          #  url = "https://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-5.3.diff";
+          #  hash = "sha256-uPuuwgdH2v37eaefnbQ93ZTMvUBcl3LAjysfOEPD1Y8=";
+          #})
         ];
       });
     })
