@@ -65,13 +65,14 @@ in
 
   };
 
-  sound.enable = true;
   hardware.pulseaudio = {
       enable = true;
       support32Bit = true;
       package = pkgs.pulseaudioFull;
       extraConfig = "unload-module module-role-cork"; # prevents Teams/whatnot from muting other streams
   };
+  # TODO: use more pipewire?!
+  services.pipewire.enable = false;
   # TODO: which is more fun? :D
   # services.pipewire = {
   #   enable = true;
@@ -164,10 +165,10 @@ in
         Only men.    [0m
   '';
 
-  hardware.sane.enable = true;  # scanning
-  # TODO: what is it? apparently it's needed for a USB scanner https://nixos.wiki/wiki/Scanners
-  services.ipp-usb.enable=true;
-  hardware.sane.extraBackends = [ pkgs.sane-airscan ];
+  #hardware.sane.enable = true;  # scanning
+  ## TODO: what is it? apparently it's needed for a USB scanner https://nixos.wiki/wiki/Scanners
+  #services.ipp-usb.enable=true;
+  #hardware.sane.extraBackends = [ pkgs.sane-airscan ];
 
   users = {
     mutableUsers = false;

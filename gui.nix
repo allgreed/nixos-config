@@ -137,7 +137,7 @@ in
         redshift
         unclutter
         screenkey # displays pressed keys, cool for presentations
-        rxvt_unicode
+	rxvt-unicode-unwrapped
         pasystray
         parcellite
         workrave

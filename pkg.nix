@@ -1,11 +1,11 @@
 { pkgs, ... }: 
+      # TODO: enable python xD
 let
   #unfreeConfig = import ./pizza.nix;
+  # TODO: use more pizza?
   unfreeConfig = {
     allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
       "google-chrome"
-
-      "zoom"
     ];
   };
   # TODO: how to make sure this matches the python that's used in packages lower?
@@ -81,7 +81,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-      (python311.withPackages(ps: with ps; [ 
+      (python312.withPackages(ps: with ps; [ 
         ptpython  # my repl shell
 
         # I sometimes like to prototype and just want this to be there
@@ -107,12 +107,13 @@ in
       # testing!
       delta
 
-      filter-subtitles
-      (import (builtins.fetchGit {
-        url = "https://github.com/nixos/nixpkgs/";
-        ref = "refs/heads/nixos-unstable";
-        rev = "69dfa612cc27b3495b766239dec31facb1df66b9"; # random commit the should be working
-      }) { config = {} // (unfreeConfig); }).python311Packages.subliminal
+      # TODO: enable subtitles!
+      #filter-subtitles
+      #(import (builtins.fetchGit {
+      #  url = "https://github.com/nixos/nixpkgs/";
+      #  ref = "refs/heads/nixos-unstable";
+      #  rev = "69dfa612cc27b3495b766239dec31facb1df66b9"; # random commit the should be working
+      #}) { config = {} // (unfreeConfig); }).python311Packages.subliminal
       # https://github.com/NixOS/nixpkgs/blob/a1d99c033b84177048d9380eb37aa6057f5f451a/pkgs/development/python-modules/subliminal/default.nix#L98
 
       wally-cli
@@ -182,7 +183,7 @@ in
       vlc
       mpv
       enca # character encoding detecter and transformer
-      gnome3.eog # TODO: drop in favour of feh?
+      gnome.eog # TODO: drop in favour of feh?
 
       gimp
       # xsane GIMP is weird... it's way better to simple-scan + then process in GIMP
@@ -209,7 +210,7 @@ in
       pirate-get
       deluge
 
-      taskwarrior
+      taskwarrior2
       # TODO: migrate to taskwarrior3 after they handle the perfomance issues
       # https://github.com/GothenburgBitFactory/taskwarrior/issues/3329
       #taskwarrior3
@@ -236,6 +237,8 @@ in
       # wakeonlan
       # TODO: why is this commented out? o.0
 
+      units
+
       gramps
 
       ffmpeg
@@ -246,6 +249,6 @@ in
 
       # I don't need it *right now*, but with all the interviews and other bullshit it sometimes come in handy
       # otherwise fuck them
-      zoom-us
+      #zoom-us
   ];
 }

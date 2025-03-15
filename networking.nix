@@ -25,13 +25,6 @@
       "8.8.8.8"
     ];
 
-    extraConfig = ''
-      cache-size=10000
-      local-ttl=3600
-      no-resolv
-      no-poll
-    '';
-
     resolveLocalQueries = true;
   };
 
