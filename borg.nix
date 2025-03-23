@@ -49,6 +49,9 @@ let
     ".mozilla" # all the settings via home-manager
     ".config/Microsoft/"
     ".config/google-chrome/"
+
+    # lesshst that sometimes is owned by root and causes issues
+    ".local/share/delta/lesshst"
   ];
   excludesWithPath = path: excludes: map (x: path + "/" + x) excludes;
   borgbackupMonitor = { config, pkgs, lib, ... }: with lib; {
