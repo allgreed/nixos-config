@@ -138,6 +138,7 @@ in
         unclutter
         screenkey # displays pressed keys, cool for presentations
 	rxvt-unicode-unwrapped
+	ghostty
         pasystray
         parcellite
         workrave
