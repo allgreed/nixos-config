@@ -6,6 +6,7 @@ let
   unfreeConfig = {
     allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
       "google-chrome"
+      "beeper"
     ];
   };
   # TODO: how to make sure this matches the python that's used in packages lower?
@@ -25,10 +26,11 @@ let
     ref = "refs/heads/nixos-unstable";
     rev = "f2537a505d45c31fe5d9c27ea9829b6f4c4e6ac5"; # 27-06-2022 <- this works
   }) { config = {} // (unfreeConfig); };
-  latestPkgs = import (builtins.fetchGit {
+  latestPkgs = import (builtins.fetchTree {
+    type = "git";
     url = "https://github.com/nixos/nixpkgs/";
-    ref = "refs/heads/nixos-unstable";
-    rev = "1d9c2c9b3e71b9ee663d11c5d298727dace8d374"; # 22-07-2024
+    rev = "d74a2335ac9c133d6bbec9fc98d91a77f1604c1f"; # 17-02-2025
+    narHash = "sha256-zON2GNBkzsIyALlOCFiEBcIjI4w38GYOb+P+R4S8Jsw=";
   }) { config = {} // (unfreeConfig); };
 in
 {
@@ -128,6 +130,8 @@ in
 
       # for sending messages fix
       latestPkgs.tg
+      # TODO: bump latestPkgs, see if it fares better
+      #latestPkgs.beeper
 
       sox
       linuxPackages.usbip
