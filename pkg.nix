@@ -10,7 +10,7 @@ let
     ];
   };
   # TODO: how to make sure this matches the python that's used in packages lower?
-  filter-subtitles = with pkgs.python39Packages; buildPythonApplication {
+  filter-subtitles = with pkgs.python312Packages; buildPythonApplication {
     pname = "subtitle-filter";
     version = "1.4.7";
     src = builtins.fetchGit {
@@ -111,8 +111,7 @@ in
       # testing!
       delta
 
-      # TODO: enable subtitles!
-      #filter-subtitles
+      filter-subtitles
       # TODO: try this instead of having it packaged with system python?
       #python312Packages.subliminal
 
