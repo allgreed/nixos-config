@@ -189,6 +189,7 @@ in
       gimp
       # xsane GIMP is weird... it's way better to simple-scan + then process in GIMP
       simple-scan
+      pdftk
 
       openscad
       freemind
