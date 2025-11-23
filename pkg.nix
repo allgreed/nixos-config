@@ -29,8 +29,8 @@ let
   latestPkgs = import (builtins.fetchTree {
     type = "git";
     url = "https://github.com/nixos/nixpkgs/";
-    rev = "d74a2335ac9c133d6bbec9fc98d91a77f1604c1f"; # 17-02-2025
-    narHash = "sha256-zON2GNBkzsIyALlOCFiEBcIjI4w38GYOb+P+R4S8Jsw=";
+    rev = "117cc7f94e8072499b0a7aa4c52084fa4e11cc9b"; # 23-11-2025
+    narHash = "sha256-+hBiJ+kG5IoffUOdlANKFflTT5nO3FrrR2CA3178Y5s=";
   }) { config = {} // (unfreeConfig); };
 in
 {
@@ -240,6 +240,11 @@ in
       # TODO: why is this commented out? o.0
 
       units
+
+      # TODO: update system then delete this line
+      #latestPkgs.ghostty # need Ghostty 1.2 for systemd units
+      # systemctl enable --user app-com.mitchellh.ghostty.service <- this works with the new package
+      ghostty # doing the upgrade this way breaks OpenGL context
 
       gramps
 
