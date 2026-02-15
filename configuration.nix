@@ -224,6 +224,9 @@ in
     };
   };
 
+  # TODO: when flake'ifying -- use this for vms
+  # services.jitterentropy-rngd.enable
+
   # otherwise the logs will just pile up...
   services.journald.extraConfig = ''
     # 30 days on Sarah in 2023 was ~500M, double that should be plenty
