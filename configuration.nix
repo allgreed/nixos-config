@@ -79,6 +79,12 @@ in
   #   pulse.enable = true;
   # };
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
+  services.blueman.enable = true; # optional GUI manager
+
   # udev rules for flashing / live-training
   hardware.keyboard.zsa.enable = true;
 
