@@ -178,6 +178,7 @@ in
       imagemagick
 
       pavucontrol
+      playerctl
 
       lsix
       evince
