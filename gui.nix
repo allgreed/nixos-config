@@ -95,7 +95,7 @@ in
 
     xkb = {
       layout = "pl";
-      options = "caps:ctrl_modifier";
+      options = "caps:ctrl_modifier,ctrl:swap_lwin_lctl";
     };
 
     ###
