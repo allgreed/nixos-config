@@ -25,7 +25,7 @@ in
 {
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw  ???? --- what does this do?? xD
 
-  # TODO: would symlinking it to /opt/i3blocks/block_name/block_name would be ugly af?
+  # TODO: would symlinking it to /opt/i3blocks/block_name/block_name would be af?
   # TODO: is this the best way?
   environment.etc."i3block-contrib-location" = {
     text = "${i3blocks-contrib}";
@@ -51,6 +51,20 @@ in
   # should make the touchpad work, but it doesn't
   # but maybe that's a HW issue on Sarah, dunno lol
   services.libinput.enable = true;
+
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      x230 = {
+        ids = [ "0001:0001:70533846" ]; # built-in keyboard
+        settings = {
+          main = {
+            leftmeta = "rightmeta";
+          };
+        };
+      };
+    };
+  };
 
   services.displayManager.defaultSession = "none+i3";
   services.xserver = {
