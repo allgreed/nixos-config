@@ -29,8 +29,8 @@ let
   latestPkgs = import (builtins.fetchTree {
     type = "git";
     url = "https://github.com/nixos/nixpkgs/";
-    rev = "117cc7f94e8072499b0a7aa4c52084fa4e11cc9b"; # 23-11-2025
-    narHash = "sha256-+hBiJ+kG5IoffUOdlANKFflTT5nO3FrrR2CA3178Y5s=";
+    rev = "cda48547b432e8d3b18b4180ba07473762ec8558"; # 17-03-2026
+    narHash = "sha256-IF5ppUWh6gHGHYDbtVUyhwy/i7D261P7fWD1bPefOsw=";
   }) { config = {} // (unfreeConfig); };
 in
 {
@@ -129,6 +129,7 @@ in
 
       # for sending messages fix
       latestPkgs.tg
+      latestPkgs.opencode
       # TODO: bump latestPkgs, see if it fares better
       #latestPkgs.beeper
 
@@ -192,6 +193,8 @@ in
       simple-scan
       pdftk
 
+      qpdf
+
       openscad
       freemind
 
@@ -254,6 +257,8 @@ in
 
       ncdu
       # baobab equivalent
+
+      evtest
 
       # I don't need it *right now*, but with all the interviews and other bullshit it sometimes come in handy
       # otherwise fuck them
