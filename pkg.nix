@@ -29,8 +29,8 @@ let
   latestPkgs = import (builtins.fetchTree {
     type = "git";
     url = "https://github.com/nixos/nixpkgs/";
-    rev = "cda48547b432e8d3b18b4180ba07473762ec8558"; # 17-03-2026
-    narHash = "sha256-IF5ppUWh6gHGHYDbtVUyhwy/i7D261P7fWD1bPefOsw=";
+    rev = "da5ad661ba4e5ef59ba743f0d112cbc30e474f32"; # 14-05-2026
+    narHash = "sha256-zi7/fsqM/kFdNuED//4WOCUtezGtKKqRNORjMvfwjnA=";
   }) { config = {} // (unfreeConfig); };
 in
 {
@@ -129,6 +129,7 @@ in
 
       # for sending messages fix
       latestPkgs.tg
+      # TODO: use their flake instead ;)
       latestPkgs.opencode
       # TODO: bump latestPkgs, see if it fares better
       #latestPkgs.beeper
