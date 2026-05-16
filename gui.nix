@@ -59,6 +59,8 @@ in
         ids = [ "0001:0001:70533846" ]; # built-in keyboard
         settings = {
           main = {
+            # I use leftmeta directly on Macs and on GNU/Linux it's translated
+            # to Control_L, but on the Sarah I want it to be Meta actually
             leftmeta = "rightmeta";
           };
         };
@@ -108,8 +110,22 @@ in
     ];
 
     xkb = {
+      # layout = "pl,custom";
       layout = "pl";
+      # options = "ctrl:swap_lwin_lctl";
       options = "caps:ctrl_modifier,ctrl:swap_lwin_lctl";
+      # extraLayouts.custom = {
+        # description = "PL with Caps->Control_R";
+        # languages = [ "pl" ];
+        # # caps:ctrl_modifier, except emmiting Control_R instead
+        # symbolsFile = pkgs.writeText "custom" ''
+          # partial modifier_keys
+          # xkb_symbols "basic" {
+            # key <CAPS> { [ Control_R ] };
+            # modifier_map Control { <CAPS> };
+          # };
+        # '';
+      # };
     };
 
     ###
