@@ -141,7 +141,7 @@ in
 
       pv
       ntfs3g
-      hledger
+      latestPkgs.hledger
       ramboxPkgs.hledger-iadd
       # TODO: actually drop the ramboxPkgs, however there was a broken package, I'm like 3 minor behind
 
