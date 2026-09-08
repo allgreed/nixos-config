@@ -38,4 +38,6 @@
     # TODO: this isn't terribly portable
     interface = "wlp3s0";
   };
+
+  services.tailscale.enable = true;
 }
