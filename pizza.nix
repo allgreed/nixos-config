@@ -2,8 +2,6 @@
 {
   # because it's non-free, got it? ^^ 
   allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-    "rambox"
-
     "google-chrome"
 
     # my home printer drivers... maybe

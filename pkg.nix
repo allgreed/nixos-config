@@ -7,6 +7,8 @@ let
     allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
       "google-chrome"
       "beeper"
+      "steam"
+      "steam-unwrapped"
     ];
   };
   # TODO: how to make sure this matches the python that's used in packages lower?
@@ -38,7 +40,8 @@ in
     enable = true;
     binfmt = true;
   };
-
+  programs.steam.enable = true;
+  
   nixpkgs.config = {
   # TODO: ok, but how to export this to a seperate file -> see pizza.nix
   } // unfreeConfig;
