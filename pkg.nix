@@ -31,8 +31,8 @@ let
   latestPkgs = import (builtins.fetchTree {
     type = "git";
     url = "https://github.com/nixos/nixpkgs/";
-    rev = "da5ad661ba4e5ef59ba743f0d112cbc30e474f32"; # 14-05-2026
-    narHash = "sha256-zi7/fsqM/kFdNuED//4WOCUtezGtKKqRNORjMvfwjnA=";
+    rev = "1c89083e451e891152365b799595cf7790a43325"; # 31-10-2026
+    narHash = "sha256-Y1CiZ4SoBUjLQyQM/pY+rS2dXD3CHLPstF0lmOc73D4=";
   }) { config = {} // (unfreeConfig); };
 in
 {
