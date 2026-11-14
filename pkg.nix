@@ -123,7 +123,7 @@ in
       macchanger
 
       cachix
-      nil
+      nix-output-monitor
 
       bat
       tealdeer
