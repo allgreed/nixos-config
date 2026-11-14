@@ -110,6 +110,7 @@ in
       pyright
       # TODO: this might require unstable?
       ruff-lsp
+      nixd
 
       # testing!
       delta
